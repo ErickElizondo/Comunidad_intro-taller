@@ -120,4 +120,60 @@ export class FirebaseService {
     })
   }
 
+  addJSON(JSON: any){
+    if(JSON.length == 0){
+      console.log("Está vacío");
+      return;
+    }
+    JSON.forEach(element => {
+      let examples = [];
+      element.examples.forEach(element2 => {
+        let exampleData = {
+          call: element2.call,
+          comment: element2.comment,
+          result: element2.result,
+        }
+        examples.push(exampleData);
+      });
+
+      
+      let outputs = [];
+      element.solution.outputs.forEach(output => {
+        let outputData = {
+          name: output.name,
+          type: output.type,
+        }
+        outputs.push(outputData);
+      });
+
+      let inputs = [];
+      element.solution.inputs.forEach(input => {
+        let inputData = {
+          name: input.name,
+          type: input.type,
+        }
+        inputs.push(inputData);
+      });
+
+      
+      let solution = {
+        outputs: outputs,
+        code: element.solution.code,
+        inputs: inputs,
+      }     
+
+      let data = {
+        call: element.call,
+        creator: element.creator,
+        code: element.code,
+        examples: examples,
+        solution: solution,
+        level: element.level,
+        created: element.created,
+        name: element.name,
+        section: element.section,
+        details: element.details,
+      }
+    });
+  }
 }
