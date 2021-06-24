@@ -1,4 +1,5 @@
 import { Component, OnInit } from '@angular/core';
+import { asElementData } from '@angular/core/src/view';
 import { FormArray, FormBuilder, FormControl, FormGroup, Validators } from '@angular/forms';
 @Component({
   selector: 'app-ejercicios',
@@ -7,27 +8,52 @@ import { FormArray, FormBuilder, FormControl, FormGroup, Validators } from '@ang
 })
 export class EjerciciosComponent implements OnInit {
   forma : FormGroup;
-
+  testOutput: [any];
   constructor(private fb:FormBuilder) { 
     this.crearFormulario();
     this.setDefaults();
   }
 
+  
   ngOnInit(): void {
+    
+     
+      
+      const cfb = this.createOutput();
+      cfb.get('name').setValue('name');
+      cfb.get('type').setValue('type');
+      console.log("aló");
+      console.log(cfb);
+        
+      
+      (this.forma.get('solution.outputs') as FormArray).push(cfb);
+      
+      
+    
   }
 
   get inputs(){
-    return this.forma.get('inputs') as FormArray;
+    return this.forma.get('solution.inputs') as FormArray;
   }
 
   get outputs(){
-    return this.forma.get('outputs') as FormArray;
+    return this.forma.get('solution.outputs') as FormArray;
   }
 
 
 
+  createOutput(){
+    return this.fb.group({
+      name: [],
+      type: []
+    });
+  }
+
+  
+
 
   crearFormulario(){
+    
     this.forma = this.fb.group(
       {
         call  : ['', [Validators.required, Validators.minLength(5)] ],
@@ -35,19 +61,25 @@ export class EjerciciosComponent implements OnInit {
         details  : ['', , ],
         examples: this.fb.group(
           {
-            Ecall: ['', Validators.required],
-            Ecomment: [ '', Validators.required],
-            Eresult: [ '', Validators.required]
+            call: ['', Validators.required],
+            comment: [ '', Validators.required],
+            result: [ '', Validators.required]
           }
         ),
         name : ['', , ],
         section : ['', , ],
-        inputs: this.fb.array([
+        solution: this.fb.group({
+          code : ['', , ],
+          outputs: this.fb.array([
+            
+          ]),
+          inputs: this.fb.array([
+            
+          ])
           
-        ]),
-        outputs: this.fb.array([
-          
-        ])
+
+        })
+        
       }
 
     );
@@ -63,34 +95,49 @@ export class EjerciciosComponent implements OnInit {
         creator: "Mora",
         details: "diego@gmail.com",
         examples: {
-          Ecall: "call",
-          Ecomment: "comment",
-          Eresult: "result",
+          call: "call",
+          comment: "comment",
+          result: "result",
         },
         name: "name",
-        section: "section"
+        section: "section",
+        solution:{
+          code: "codigo",
+          inputs:[
+            {
+              name: "buenas",
+              type: "saludos",
+            }
+          ],
+          outputs:[
+            {
+              name: "asd",
+              type: "jeje",
+            }
+          ]
+        }
+        
       });
 
-      let asd = {
-        name: "testing",
-        type: "type"
-      };
-    //  [['test'], ['gym', 'type'], ['leer', 'type']].forEach (valor => this.inputs.push(this.fb.control(valor)));
-      this.inputs.push(this.fb.control(['hola', 'test']));
-      console.log(this.inputs);
+      const cfb = this.createOutput();
+      cfb.get('name').setValue('aloha');
+      cfb.get('type').setValue('jejeps');
       
-      ['tenis2', 'gym2', 'leer2'].forEach (valor => this.outputs.push(this.fb.control(valor)));
+        
+      
+      (this.forma.get('solution.outputs') as FormArray).push(cfb);
+      
+
+    //  [['test'], ['gym', 'type'], ['leer', 'type']].forEach (valor => this.inputs.push(this.fb.control(valor)));
+      //this.inputs.push(this.fb.control(['hola', 'test']));
+      
+      
+      //['tenis2', 'gym2', 'leer2'].forEach (valor => this.outputs.push(this.fb.control(valor)));
+      //this.inputs.push(this.fb.control(asd));
   }
 
 
 
-  agregarInput(){
-    this.inputs.push(this.fb.control('Hola array', Validators.required));
-  }
-
-  borrarInput(i:number){
-    this.inputs.removeAt(i);
-  }
 
   
   agregarOutput(){
