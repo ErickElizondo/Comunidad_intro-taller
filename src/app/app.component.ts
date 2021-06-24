@@ -23,8 +23,8 @@ export class AppComponent implements OnInit {
     
   }
 
-  addjson(){
-    this.firebaseService.addJSON(this.data);
+  getEjercicios(){
+    this.firebaseService.getEjercicios();
   }
   
 

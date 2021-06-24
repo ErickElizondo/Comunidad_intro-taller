@@ -12,11 +12,13 @@ import { AngularFirestoreModule } from '@angular/fire/firestore';
 import { AngularFireAuthModule } from '@angular/fire/auth';;
 import { AppRoutingModule } from './app-routing.module';
 import { HomeComponent } from './home/home.component';
+import { EjerciciosComponent } from './ejercicios/ejercicios.component';
 
 @NgModule({
   declarations: [
     AppComponent,
     HomeComponent,
+    EjerciciosComponent,
   ],
   imports: [
     BrowserModule,

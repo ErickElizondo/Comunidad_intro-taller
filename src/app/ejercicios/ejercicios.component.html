@@ -1,0 +1,208 @@
+<h4>Formularios <small>data</small></h4>
+<hr>
+<form [formGroup]="forma" >
+
+    <div>
+
+        <div class="form-group row">
+            <label class="col-2 col-form-label">call</label>
+            <div class="col">
+
+                <input class="form-control" type="text" 
+                placeholder="Nombre" 
+                formControlName="call"
+                
+                >
+                
+            </div>
+        </div>
+
+        <div class="form-group row">
+            <label class="col-2 col-form-label">creator</label>
+            <div class="col">
+
+                <input class="form-control" type="text" 
+                placeholder="Apellido" 
+                formControlName = "creator"
+                
+                >
+                
+            </div>
+        </div>
+
+    
+
+    <div class="form-group row">
+        <label class="col-2 col-form-label">details</label>
+        <div class="col">
+
+            <input class="form-control" type="email" placeholder="Correo electrónico" 
+            formControlName="details"
+           
+                >
+                
+        </div>
+    </div>
+
+    <div class="form-group row" formGroupName="examples">
+        <label class="col-2 col-form-label">examples</label>
+        <div class="form-row col">
+            <div class="col">
+                <input type="text"
+                        class="form-control"
+                        placeholder="call"
+                        formControlName="Ecall"                        
+                        >
+            </div>
+            <div class="col">
+                <input type="text"
+                        class="form-control"
+                        placeholder="comment"
+                        formControlName="Ecomment"
+                        
+                        >
+
+            </div>
+
+            <div class="col">
+              <input type="text"
+                      class="form-control"
+                      placeholder="result"
+                      formControlName="Eresult"
+                      
+                      >
+
+          </div>
+
+        </div>
+    </div>
+
+    <div class="form-group row">
+      <label class="col-2 col-form-label">name</label>
+      <div class="col">
+
+          <input class="form-control" type="text" placeholder="Usuario" 
+          formControlName="name"
+          
+              >
+              
+      </div>
+  </div>
+
+  <div class="form-group row">
+    <label class="col-2 col-form-label">section</label>
+    <div class="col">
+
+        <input class="form-control" type="text" placeholder="Usuario" 
+        formControlName="section">
+            
+    </div>
+  </div>
+
+
+
+
+    <div class="col">
+        <table class="table">
+            <thead class="thead-dark">
+                <tr>
+                    <th>Id</th>
+                    <th>name</th>
+                    <th>type</th>
+                    <th>Borrar</th>
+                </tr>
+            </thead>
+            <tbody formArrayName="inputs">
+                <tr *ngFor="let control of inputs.controls; let i=index">
+                    <td>{{i+1}}</td>
+                    <td>
+                        <input  class="form-control" 
+                                type="text"
+                                [formControlName] = "i"
+                        >
+                    </td>
+
+                    <td>
+                      <input  class="form-control" 
+                              type="text"
+                              [formControlName] = "i"
+                      >
+                  </td>
+          
+                    <td>
+                        <button class="btn btn-danger"
+                                (click)="borrarInput(i)">
+                            Borrar
+                        </button>
+                    </td>
+                </tr>
+            </tbody>
+            
+        </table>
+
+        <button     type="button" 
+                    class="btn btn-primary btn-block mb-5"
+                    (click)="agregarInput()">
+            + Agregar 
+        </button>        
+
+    </div>
+
+    <div class="col">
+      <table class="table">
+          <thead class="thead-dark">
+              <tr>
+                  <th>Id</th>
+                  <th>Output</th>
+                  <th>Borrar</th>
+              </tr>
+          </thead>
+          <tbody formArrayName="outputs">
+              <tr *ngFor="let control of outputs.controls; let i=index">
+                  <td>{{i+1}}</td>
+                  <td>
+                      <input  class="form-control" 
+                              type="text"
+                              [formControlName] = "i"
+                      >
+                  </td> 
+                  <td>
+                      <button class="btn btn-danger"
+                              (click)="borrarOutput(i)">
+                          Borrar
+                      </button>
+                  </td>
+              </tr>
+          </tbody>
+      </table>
+
+      <button     type="button" 
+                  class="btn btn-primary btn-block mb-5"
+                  (click)="agregarOutput()">
+          + Agregar 
+      </button>        
+
+  </div>
+    
+
+
+    <div class="form-group row">
+        <label class="col-2 col-form-label">&nbsp;</label>
+        <div class="input-group col">
+            <button type="submit" class="btn btn-outline-primary btn-block">
+                Guardar
+            </button>
+        </div>
+    </div>
+</div>
+</form>
+
+<hr>
+<pre>
+    Estado del form: {{ forma.valid }}
+
+    Status del form: {{ forma.status }}
+</pre>
+<pre>
+    {{ forma.value | json }}
+</pre>

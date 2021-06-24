@@ -3,13 +3,15 @@ import { AngularFireAuth } from '@angular/fire/auth';
 import {Router} from "@angular/router";
 import { AngularFirestore } from '@angular/fire/firestore';
 import { Observable, BehaviorSubject } from 'rxjs';
+import { EjerciciosService } from './ejercicios.service';
 
 @Injectable({
   providedIn: 'root'
 })
 export class FirebaseService {
 
-  constructor(private ngZone: NgZone, private afAuth: AngularFireAuth, private firestore: AngularFirestore , private router: Router) { }
+  constructor(private ngZone: NgZone, private afAuth: AngularFireAuth, private firestore: AngularFirestore , private router: Router,
+    private _ejercicioService: EjerciciosService) { }
 
   public currentUser: any;
   public userStatus: string;
@@ -22,7 +24,7 @@ export class FirebaseService {
   }
 
 
-
+  ejercicios: any[] = [];
   signUp(email:string, password:string){
   
     
@@ -174,6 +176,19 @@ export class FirebaseService {
         section: element.section,
         details: element.details,
       }
+    });
+  }
+
+  getEjercicios() {
+    this._ejercicioService.getEjercicios().subscribe(data => {
+      this.ejercicios = [];
+      data.forEach((element: any) => {
+        this.ejercicios.push({
+          id: element.payload.doc.id,
+          ...element.payload.doc.data()
+        })
+      });
+      console.log(this.ejercicios);
     });
   }
 }
