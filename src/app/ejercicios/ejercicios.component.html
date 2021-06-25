@@ -48,7 +48,7 @@
             <th>call</th>
             <th>comment</th>
             <th>result</th>
-            <th>Borrar</th>
+            <th [hidden] = "isReadOnly">Borrar</th>
           </tr>
         </thead>
         <tr *ngFor="let obj of examples.controls; let i= index" formArrayName="examples">
@@ -69,7 +69,7 @@
               </td>
 
               <td>
-                <button class="btn btn-danger" (click)="borrarExample(i)" [disabled] = "isReadOnly">
+                <button class="btn btn-danger" (click)="borrarExample(i)" [hidden] = "isReadOnly">
                   Borrar
                 </button>
               </td>
@@ -129,7 +129,7 @@
                 <th>Id</th>
                 <th>name</th>
                 <th>type</th>
-                <th>Borrar</th>
+                <th [hidden] = "isReadOnly">Borrar</th>
               </tr>
             </thead>
             <tr *ngFor="let obj of inputs.controls; let i= index" formArrayName="inputs">
@@ -145,7 +145,7 @@
                     <textarea class="form-control" type="text" formControlName="type" [readOnly] = "isReadOnly"> </textarea>
                   </td>
                   <td>
-                    <button class="btn btn-danger" (click)="borrarInput(i)" [disabled] = "isReadOnly">
+                    <button class="btn btn-danger" (click)="borrarInput(i)" [hidden] = "isReadOnly">
                       Borrar
                     </button>
                   </td>
@@ -170,7 +170,7 @@
                 <th>Id</th>
                 <th>name</th>
                 <th>type</th>
-                <th>Borrar</th>
+                <th [hidden] = "isReadOnly">Borrar</th>
               </tr>
             </thead>
             <tr *ngFor="let obj of outputs.controls; let i= index" formArrayName="outputs">
@@ -186,7 +186,7 @@
                     <textarea class="form-control" type="text" formControlName="type" [readOnly] = "isReadOnly"> </textarea>
                   </td>
                   <td>
-                    <button class="btn btn-danger" (click)="borrarOutput(i)" [disabled] = "isReadOnly">
+                    <button class="btn btn-danger" (click)="borrarOutput(i)" [hidden] = "isReadOnly">
                       Borrar
                     </button>
                   </td>
