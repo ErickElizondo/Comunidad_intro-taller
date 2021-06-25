@@ -16,7 +16,7 @@ export class AppComponent implements OnInit {
 
   constructor(private firebaseService: FirebaseService, private firestore: AngularFirestore){}
 
-  userStatus = this.firebaseService.userStatus;
+  userStatus: any = this.firebaseService;
 
   logout(){
     this.firebaseService.logOut();
