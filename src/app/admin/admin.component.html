@@ -1,6 +1,6 @@
 <div class="container mt-4">
   <div class="card">
-      <div class="card-body">
+      <div class="card-body tableMax">
           <span class="h3 text-success">Listado de Ejercicios</span>
           <button class="btn btn-dark btn-lg float-right" routerLink="/admin/create">Agregar</button>
           <h5 style="margin-top: 30px;" *ngIf="ejercicios.length == 0">No hay datos para mostrar</h5>
@@ -21,9 +21,9 @@
                   <td>{{ ejercicio.details }}</td>
                   <td>{{ ejercicio.level }}</td>
                   <td>
-                    <i class="fas fa-edit" [routerLink]="['/admin/update/', ejercicio.id]"></i>
+                    <i class="fas fa-edit fa-lg" [routerLink]="['/admin/update/', ejercicio.id]"></i>
                     <i (click)="eliminarEjercicio(ejercicio.id)" class="fas fa-trash-alt fa-lg text-danger"></i>
-                    <i class="fas fa-info-circle text-success" [routerLink]="['/admin/read/', ejercicio.id]"></i>
+                    <i class="fas fa-info-circle text-success fa-lg" [routerLink]="['/admin/read/', ejercicio.id]"></i>
                   </td>
                 </tr>
               </tbody>

@@ -1,0 +1,16 @@
+table {
+    border: 1px solid #c3c3c3;
+    border-radius: 5px;
+    width: 100%;
+    border-spacing: 0px;
+    border-collapse: separate;
+}
+table th {
+    font-weight: 600;
+    font-size: 1.1em;
+    text-align: center;
+    background: #A0E7E5;
+}
+table td {
+    background: transparent;
+}

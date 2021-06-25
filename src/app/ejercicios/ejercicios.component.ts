@@ -256,7 +256,7 @@ export class EjerciciosComponent implements OnInit {
   esEditar() {
     
     if (this.id !== null) {
-      this.titulo = 'Editar Ejercicio'
+      this.titulo = 'Editar ejercicio'
       this.crud.getEjercicio(this.id).subscribe(data => {
         this.forma.reset(
           {
