@@ -13,7 +13,6 @@
       <li *ngIf="userStatus && userStatus.role === 'admin'"><a [routerLink]="[ '/admin' ]">Admin</a></li>
       <li *ngIf="userStatus && userStatus.role === 'user'"><a [routerLink]="[ '/student' ]">Student</a></li>
       <li *ngIf="userStatus"><button class="logout" (click)="logout()">Logout</button></li>
-      <!-- <li><button class="add" (click)="getEjercicios()">getEjercicios</button></li> -->
       
     </ul>
     

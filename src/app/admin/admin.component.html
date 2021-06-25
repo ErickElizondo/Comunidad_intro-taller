@@ -1,5 +1,5 @@
-<section>
-  <!-- <img src="../../assets/2480325.svg" /> ../../assets/mountain.png -->
+<!-- <section>
+   <img src="../../assets/2480325.svg" /> ../../assets/mountain.png
   <div class="row justify-content-center">
     <div class="col-sm-5 mb-3">
       <div class="card bg-dark text-white">
@@ -47,4 +47,37 @@
     </div>
   </div>
 
-</section>
+</section> -->
+
+<div class="container mt-4">
+  <div class="card">
+      <div class="card-body">
+          <span class="h3 text-success">Listado de Ejercicios</span>
+          <button class="btn btn-dark btn-lg float-right" routerLink="/admin/create">Agregar</button>
+          <h5 style="margin-top: 30px;" *ngIf="ejercicios.length == 0">No hay datos para mostrar</h5>
+          <table *ngIf="ejercicios.length > 0" class="table table-striped mt-5">
+              <thead>
+                <tr>
+                  <th>Call</th>
+                  <th>Creator</th>
+                  <th>Details</th>
+                  <th>Level</th>
+                  <th>  </th>
+                </tr>
+              </thead>
+              <tbody>
+                <tr *ngFor="let ejercicio of ejercicios">
+                  <td>{{ ejercicio.call }}</td>
+                  <td>{{ ejercicio.creator }}</td>
+                  <td>{{ ejercicio.details }}</td>
+                  <td>{{ ejercicio.level | currency }}</td>
+                  <td>
+                    <i class="fas fa-edit" [routerLink]="['/admin/update/', ejercicio.id]"></i>
+                    <i (click)="eliminarEjercicio(ejercicio.id)" class="fas fa-trash-alt fa-lg text-danger"></i>
+                  </td>
+                </tr>
+              </tbody>
+            </table>
+      </div>
+  </div>
+</div>

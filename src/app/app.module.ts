@@ -14,12 +14,14 @@ import { AppRoutingModule } from './app-routing.module';
 import { HomeComponent } from './home/home.component';
 import { EjerciciosComponent } from './ejercicios/ejercicios.component';
 import { TarjetasComponent } from './components/tarjetas/tarjetas.component';
+import { ListEjerciciosComponent } from './list-ejercicios/list-ejercicios.component';
 
 @NgModule({
   declarations: [
     AppComponent,
     HomeComponent,
     EjerciciosComponent,
+    ListEjerciciosComponent,
     TarjetasComponent,
   ],
   imports: [

@@ -1,35 +1,17 @@
 import { Component, OnInit } from '@angular/core';
-import { Router } from '@angular/router';
 import { EjerciciosService } from '../ejercicios.service';
 @Component({
-  selector: 'app-admin',
-  templateUrl: './admin.component.html',
-  styleUrls: ['./admin.component.css']
+  selector: 'app-list-ejercicios',
+  templateUrl: './list-ejercicios.component.html',
+  styleUrls: ['./list-ejercicios.component.css']
 })
-export class AdminComponent implements OnInit {
+export class ListEjerciciosComponent implements OnInit {
 
-  constructor(private router: Router, private _ejercicioService: EjerciciosService) { }
+  constructor(private _ejercicioService: EjerciciosService) { }
 
   ngOnInit() {
     this.getEjercicios();
   }
-
-  goToCreate(){
-    this.router.navigate(["/admin/create"])
-  }
-
-  goToRead(){
-    this.router.navigate(["/admin/read"])
-  }
-
-  goToUpdate(){
-    this.router.navigate(["/admin/update"])
-  }
-
-  goToDelete(){
-    this.router.navigate(["/admin/delete"])
-  }
-
   ejercicios: any[] = [];
   getEjercicios() {
     this._ejercicioService.getEjercicios().subscribe(data => {
