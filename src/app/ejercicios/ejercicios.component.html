@@ -8,7 +8,7 @@
       <label class="col-2 col-form-label">Call</label>
       <div class="col">
 
-        <input class="form-control" type="text" placeholder="Call" formControlName="call" [class.is-invalid] = "callInvalido" >
+        <input class="form-control" type="text" placeholder="Call" formControlName="call" [class.is-invalid] = "callInvalido" [readOnly] = "isReadOnly">
         <small *ngIf="callInvalido" class="text-danger">
           Debe tener al menos 5 letras
         </small>
@@ -19,7 +19,7 @@
       <label class="col-2 col-form-label">Creator</label>
       <div class="col">
 
-        <input class="form-control" type="text" placeholder="Creator" formControlName="creator" [class.is-invalid] = "creatorInvalido" >
+        <input class="form-control" type="text" placeholder="Creator" formControlName="creator" [class.is-invalid] = "creatorInvalido" [readOnly] = "isReadOnly">
         <small *ngIf="creatorInvalido" class="text-danger">
           Debe tener al menos 5 letras
         </small>
@@ -32,7 +32,7 @@
       <label class="col-2 col-form-label">Details</label>
       <div class="col">
 
-        <input class="form-control" type="email" placeholder="Details" formControlName="details" [class.is-invalid] = "detailsInvalido" >
+        <textarea class="form-control" type="email" placeholder="Details" formControlName="details" [class.is-invalid] = "detailsInvalido" [readOnly] = "isReadOnly"> </textarea>
         <small *ngIf="detailsInvalido" class="text-danger">
           Es un campo obligatorio
         </small>
@@ -57,19 +57,19 @@
               <td>{{i+1}}</td>
 
               <td>
-                <input class="form-control" type="text" formControlName="call">
+                <textarea class="form-control" type="text" formControlName="call" [readOnly] = "isReadOnly"> </textarea>
               </td>
 
               <td>
-                <input class="form-control" type="text" formControlName="comment">
+                <textarea class="form-control" type="text" formControlName="comment" [readOnly] = "isReadOnly"> </textarea>
               </td>
 
               <td>
-                <input class="form-control" type="text" formControlName="result">
+                <textarea class="form-control" type="text" formControlName="result" [readOnly] = "isReadOnly"> </textarea>
               </td>
 
               <td>
-                <button class="btn btn-danger" (click)="borrarExample(i)">
+                <button class="btn btn-danger" (click)="borrarExample(i)" [disabled] = "isReadOnly">
                   Borrar
                 </button>
               </td>
@@ -81,7 +81,7 @@
 
       </table>
 
-      <button type="button" class="btn btn-primary btn-block mb-5" (click)="agregarExample()">
+      <button type="button" class="btn btn-primary btn-block mb-5" (click)="agregarExample()" [hidden] = "isReadOnly">
         + Agregar
       </button>
     </div>
@@ -90,7 +90,7 @@
       <label class="col-2 col-form-label">Name</label>
       <div class="col">
 
-        <input class="form-control" type="text" placeholder="Name" formControlName="name" [class.is-invalid] = "nameInvalido" >
+        <input class="form-control" type="text" placeholder="Name" formControlName="name" [class.is-invalid] = "nameInvalido" [readOnly] = "isReadOnly">
         <small *ngIf="nameInvalido" class="text-danger">
           Es un campo obligatorio
         </small>
@@ -101,7 +101,7 @@
       <label class="col-2 col-form-label">Section</label>
       <div class="col">
 
-        <input class="form-control" type="text" placeholder="Section" formControlName="section" [class.is-invalid] = "sectionInvalido" >
+        <input class="form-control" type="text" placeholder="Section" formControlName="section" [class.is-invalid] = "sectionInvalido" [readOnly] = "isReadOnly">
         <small *ngIf="sectionInvalido" class="text-danger">
           Es un campo obligatorio
         </small>
@@ -116,7 +116,7 @@
       <div class="form-col">
         <h3>Code</h3>
         <div class="col mb-5">
-          <textarea type="text" class="form-control input-group " placeholder="code" formControlName="code" [class.is-invalid] = "codeInvalido"  ></textarea>
+          <textarea type="text" class="form-control input-group " placeholder="code" formControlName="code" [class.is-invalid] = "codeInvalido"  [readOnly] = "isReadOnly"></textarea>
           <small *ngIf="codeInvalido" class="text-danger">
             Es un campo obligatorio
           </small>
@@ -138,14 +138,14 @@
                   <td>{{i+1}}</td>
 
                   <td>
-                    <input class="form-control" type="text" formControlName="name">
+                    <textarea class="form-control" type="text" formControlName="name" [readOnly] = "isReadOnly"> </textarea>
                   </td>
 
                   <td>
-                    <input class="form-control" type="text" formControlName="type" >
+                    <textarea class="form-control" type="text" formControlName="type" [readOnly] = "isReadOnly"> </textarea>
                   </td>
                   <td>
-                    <button class="btn btn-danger" (click)="borrarInput(i)">
+                    <button class="btn btn-danger" (click)="borrarInput(i)" [disabled] = "isReadOnly">
                       Borrar
                     </button>
                   </td>
@@ -157,7 +157,7 @@
 
           </table>
 
-          <button type="button" class="btn btn-primary btn-block mb-5" (click)="agregarInput()">
+          <button type="button" class="btn btn-primary btn-block mb-5" (click)="agregarInput()" [hidden] = "isReadOnly">
             + Agregar
           </button>
         </div>
@@ -179,14 +179,14 @@
                   <td>{{i+1}}</td>
 
                   <td>
-                    <input class="form-control" type="text" formControlName="name">
+                    <textarea class="form-control" type="text" formControlName="name" [readOnly] = "isReadOnly"> </textarea>
                   </td>
 
                   <td>
-                    <input class="form-control" type="text" formControlName="type">
+                    <textarea class="form-control" type="text" formControlName="type" [readOnly] = "isReadOnly"> </textarea>
                   </td>
                   <td>
-                    <button class="btn btn-danger" (click)="borrarOutput(i)">
+                    <button class="btn btn-danger" (click)="borrarOutput(i)" [disabled] = "isReadOnly">
                       Borrar
                     </button>
                   </td>
@@ -198,7 +198,7 @@
 
           </table>
 
-          <button type="button" class="btn btn-primary btn-block mb-5" (click)="agregarOutput()">
+          <button type="button" class="btn btn-primary btn-block mb-5" (click)="agregarOutput()" [hidden] = "isReadOnly">
             + Agregar
           </button>
         </div>
@@ -209,7 +209,7 @@
 
     <div class="form-group row">
       <div class="input-group col">
-        <button type="submit" class="btn btn-outline-primary btn-block">
+        <button type="submit" class="btn btn-outline-primary btn-block" [hidden] = "isReadOnly">
           Guardar
         </button>
       </div>

@@ -12,6 +12,7 @@ export class EjerciciosComponent implements OnInit {
   forma : FormGroup;
   id: string | null;
   titulo = "Agregar ejercicio";
+  isReadOnly = false;
   constructor(private fb:FormBuilder, private ngZone: NgZone, private router: Router, private crud:EjerciciosService, private aRoute: ActivatedRoute) { 
     this.crearFormulario();
     this.setDefaults();
@@ -22,6 +23,11 @@ export class EjerciciosComponent implements OnInit {
   
   ngOnInit(): void {      
     this.esEditar();
+    if(this.router.url.includes('read')){
+      this.isReadOnly = true;
+    }else{
+      this.isReadOnly = false;
+    }
   }
 
   get inputs(){
