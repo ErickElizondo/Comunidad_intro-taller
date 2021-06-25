@@ -36,16 +36,16 @@ export class EjerciciosComponent implements OnInit {
 
   createOutput(){
     return this.fb.group({
-      name: [],
-      type: []
+      name: ['', [Validators.required, ]],
+      type: ['', [Validators.required, ]]
     });
   }
 
   createExample(){
     return this.fb.group({
-      call: [],
-      comment: [],
-      result: []
+      call: ['', [Validators.required, ]],
+      comment: ['', [Validators.required, ]],
+      result: ['', [Validators.required, ]]
     })
   }
 
@@ -81,7 +81,7 @@ export class EjerciciosComponent implements OnInit {
       {
         call  : ['', [Validators.required, Validators.minLength(5)] ],
         creator: ['', [Validators.required, ] ],
-        code: ['', [Validators.required, Validators.minLength(5)] ],
+        code: [ ],
         created: [],
         details  : ['', [Validators.required, ] ],
         examples: this.fb.array([
@@ -91,7 +91,7 @@ export class EjerciciosComponent implements OnInit {
         name : ['', [Validators.required, ] ],
         section : ['', [Validators.required, ] ],
         solution: this.fb.group({
-          code : [],
+          code : ['', [Validators.required, ] ],
           outputs: this.fb.array([
             
           ]),
