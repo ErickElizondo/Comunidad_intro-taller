@@ -23,9 +23,7 @@ export class AppComponent implements OnInit {
     
   }
 
-  getEjercicios(){
-    this.firebaseService.getEjercicios();
-  }
+
   
 
   ngOnInit(){

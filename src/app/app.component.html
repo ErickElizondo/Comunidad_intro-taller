@@ -10,9 +10,8 @@
       <li *ngIf="!userStatus"><a class="text-white nounderline" [routerLink]="[ '/signup' ]">Signup</a></li> 
       <li *ngIf="!userStatus"><a class="text-white nounderline" [routerLink]="[ '/login' ]">Login</a></li>
       <li *ngIf="!userStatus"><a class="text-white nounderline" [routerLink]="[ '/home' ]">home</a></li>
-      <li *ngIf="userStatus && userStatus.role === 'admin'"><a [routerLink]="[ '/admin' ]">admin</a></li>
+      <li *ngIf="userStatus && userStatus.role === 'admin'"><a class="text-white nounderline" [routerLink]="[ '/admin' ]">admin</a></li>
       <li *ngIf="userStatus"><button class="logout" (click)="logout()">Logout</button></li>
-      <li><button class="add" (click)="getEjercicios()">getEjercicios</button></li>
       
     </ul>
     
