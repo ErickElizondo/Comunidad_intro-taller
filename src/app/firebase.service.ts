@@ -175,7 +175,18 @@ export class FirebaseService {
         name: element.name,
         section: element.section,
         details: element.details,
+        fechaCreacion: new Date(),
+        fechaActualizacion: new Date()
       }
+
+      this.firestore.collection("ejercicios").add(data)
+       .then(data => {
+        data.get().then(x => {
+          console.log(x.data());
+        })
+       }).catch(err => {
+         console.log(err);
+       })
     });
   }
 

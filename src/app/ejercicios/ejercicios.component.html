@@ -1,233 +1,220 @@
 <h4>Formularios <small>data</small></h4>
 <hr>
-<form [formGroup]="forma" >
+<form [formGroup]="forma" (ngSubmit)="guardar()">
 
-    <div>
-
-        <div class="form-group row">
-            <label class="col-2 col-form-label">call</label>
-            <div class="col">
-
-                <input class="form-control" type="text" 
-                placeholder="Nombre" 
-                formControlName="call"
-                
-                >
-                
-            </div>
-        </div>
-
-        <div class="form-group row">
-            <label class="col-2 col-form-label">creator</label>
-            <div class="col">
-
-                <input class="form-control" type="text" 
-                placeholder="Apellido" 
-                formControlName = "creator"
-                
-                >
-                
-            </div>
-        </div>
-
-    
+  <div>
 
     <div class="form-group row">
-        <label class="col-2 col-form-label">details</label>
-        <div class="col">
-
-            <input class="form-control" type="email" placeholder="Correo electrónico" 
-            formControlName="details"
-           
-                >
-                
-        </div>
-    </div>
-
-    <div class="form-group row" formGroupName="examples">
-        <label class="col-2 col-form-label">examples</label>
-        <div class="form-row col">
-            <div class="col">
-                <input type="text"
-                        class="form-control"
-                        placeholder="call"
-                        formControlName="call"                        
-                        >
-            </div>
-            <div class="col">
-                <input type="text"
-                        class="form-control"
-                        placeholder="comment"
-                        formControlName="comment"
-                        
-                        >
-
-            </div>
-
-            <div class="col">
-              <input type="text"
-                      class="form-control"
-                      placeholder="result"
-                      formControlName="result"
-                      
-                      >
-
-          </div>
-
-        </div>
-    </div>
-
-    <div class="form-group row">
-      <label class="col-2 col-form-label">name</label>
+      <label class="col-2 col-form-label">Call</label>
       <div class="col">
 
-          <input class="form-control" type="text" placeholder="Usuario" 
-          formControlName="name"
-          
-              >
-              
+        <input class="form-control" type="text" placeholder="Call" formControlName="call" [class.is-invalid] = "callInvalido" required>
+        <small *ngIf="callInvalido" class="text-danger">
+          Debe tener al menos 5 letras
+        </small>
       </div>
-  </div>
+    </div>
 
-  <div class="form-group row">
-    <label class="col-2 col-form-label">section</label>
+    <div class="form-group row">
+      <label class="col-2 col-form-label">Creator</label>
+      <div class="col">
+
+        <input class="form-control" type="text" placeholder="Creator" formControlName="creator" [class.is-invalid] = "creatorInvalido" required>
+        <small *ngIf="creatorInvalido" class="text-danger">
+          Debe tener al menos 5 letras
+        </small>
+      </div>
+    </div>
+
+
+
+    <div class="form-group row">
+      <label class="col-2 col-form-label">Details</label>
+      <div class="col">
+
+        <input class="form-control" type="email" placeholder="Details" formControlName="details" [class.is-invalid] = "detailsInvalido" required>
+        <small *ngIf="detailsInvalido" class="text-danger">
+          Es un campo obligatorio
+        </small>
+      </div>
+    </div>
+
     <div class="col">
-
-        <input class="form-control" type="text" placeholder="Usuario" 
-        formControlName="section">
-            
-    </div>
-  </div>
-
-
-  <div class="form-group row" formGroupName="solution">
-    <label class="col-2 col-form-label">solution</label>
-    <div class="form-col">
-      <div class="col">
-        <input type="text"
-        class="form-control"
-        placeholder="code"
-        formControlName="code"
-        
-        >
-      </div>
-
-      <!-- <div class="col">
-          <table class="table">
-              <thead class="thead-dark">
-                  <tr>
-                      <th>Id</th>
-                      <th>Output</th>
-                      <th>Borrar</th>
-                  </tr>
-              </thead>
-              <tbody formArrayName="outputs">
-                  <tr *ngFor="let control of outputs.controls; let i=index">
-                      <td>{{i+1}}</td>
-                      <td>
-                          <input  class="form-control" 
-                                  type="text"
-                                  [formControlName] = "i"
-                          >
-                      </td> 
-                      <td>
-                          <button class="btn btn-danger"
-                                  (click)="borrarOutput(i)">
-                              Borrar
-                          </button>
-                      </td>
-                  </tr>
-              </tbody>
-          </table>
-    
-          <button     type="button" 
-                      class="btn btn-primary btn-block mb-5"
-                      (click)="agregarOutput()">
-              + Agregar 
-          </button>   
-          
-
-      </div> -->
-
-      <div class="col">
-        
-        <div *ngFor="let obj of outputs.controls; let i= index" formArrayName="outputs">
-                     
+      <h3>Ejemplos</h3>
+      <table class="table">
+        <thead class="thead-dark">
+          <tr>
+            <th>Id</th>
+            <th>call</th>
+            <th>comment</th>
+            <th>result</th>
+            <th>Borrar</th>
+          </tr>
+        </thead>
+        <tr *ngFor="let obj of examples.controls; let i= index" formArrayName="examples">
           <ng-container [formGroupName]="i">
-                <label class="text-left"> name :</label>
-                <input type="text" formControlName="name">
-
-                <label class="text-left"> type :</label>
-                <input type="text" formControlName="type">
-          </ng-container>
-              
             
-          
+              <td>{{i+1}}</td>
+
+              <td>
+                <input class="form-control" type="text" formControlName="call">
+              </td>
+
+              <td>
+                <input class="form-control" type="text" formControlName="comment">
+              </td>
+
+              <td>
+                <input class="form-control" type="text" formControlName="result">
+              </td>
+
+              <td>
+                <button class="btn btn-danger" (click)="borrarExample(i)">
+                  Borrar
+                </button>
+              </td>
+            
+
+          </ng-container>
+
+        </tr>
+
+      </table>
+
+      <button type="button" class="btn btn-primary btn-block mb-5" (click)="agregarExample()">
+        + Agregar
+      </button>
+    </div>
+
+    <div class="form-group row">
+      <label class="col-2 col-form-label">Name</label>
+      <div class="col">
+
+        <input class="form-control" type="text" placeholder="Name" formControlName="name" [class.is-invalid] = "nameInvalido" required>
+        <small *ngIf="nameInvalido" class="text-danger">
+          Es un campo obligatorio
+        </small>
+      </div>
+    </div>
+
+    <div class="form-group row">
+      <label class="col-2 col-form-label">Section</label>
+      <div class="col">
+
+        <input class="form-control" type="text" placeholder="Section" formControlName="section" [class.is-invalid] = "sectionInvalido" required>
+        <small *ngIf="sectionInvalido" class="text-danger">
+          Es un campo obligatorio
+        </small>
+      </div>
+    </div>
+
+
+    
+
+    <div class="form-group row" formGroupName="solution">
+      <label class="col-2 col-form-label">Solution</label>
+      <div class="form-col">
+        <h3>Code</h3>
+        <div class="col mb-5">
+          <textarea type="text" class="form-control input-group " placeholder="code" formControlName="code" [class.is-invalid] = "codeInvalido" required required></textarea>
+          <small *ngIf="codeInvalido" class="text-danger">
+            Es un campo obligatorio
+          </small>
+        </div>
+        <h3>Inputs</h3>
+        <div class="col">
+          <table class="table">
+            <thead class="thead-dark">
+              <tr>
+                <th>Id</th>
+                <th>name</th>
+                <th>type</th>
+                <th>Borrar</th>
+              </tr>
+            </thead>
+            <tr *ngFor="let obj of inputs.controls; let i= index" formArrayName="inputs">
+              <ng-container [formGroupName]="i">
+                
+                  <td>{{i+1}}</td>
+
+                  <td>
+                    <input class="form-control" type="text" formControlName="name">
+                  </td>
+
+                  <td>
+                    <input class="form-control" type="text" formControlName="type">
+                  </td>
+                  <td>
+                    <button class="btn btn-danger" (click)="borrarInput(i)">
+                      Borrar
+                    </button>
+                  </td>
+                
+
+              </ng-container>
+
+            </tr>
+
+          </table>
+
+          <button type="button" class="btn btn-primary btn-block mb-5" (click)="agregarInput()">
+            + Agregar
+          </button>
+        </div>
+
+        <h3>Outputs</h3>
+        <div class="col">
+          <table class="table">
+            <thead class="thead-dark">
+              <tr>
+                <th>Id</th>
+                <th>name</th>
+                <th>type</th>
+                <th>Borrar</th>
+              </tr>
+            </thead>
+            <tr *ngFor="let obj of outputs.controls; let i= index" formArrayName="outputs">
+              <ng-container [formGroupName]="i">
+                
+                  <td>{{i+1}}</td>
+
+                  <td>
+                    <input class="form-control" type="text" formControlName="name">
+                  </td>
+
+                  <td>
+                    <input class="form-control" type="text" formControlName="type">
+                  </td>
+                  <td>
+                    <button class="btn btn-danger" (click)="borrarOutput(i)">
+                      Borrar
+                    </button>
+                  </td>
+                
+
+              </ng-container>
+
+            </tr>
+
+          </table>
+
+          <button type="button" class="btn btn-primary btn-block mb-5" (click)="agregarOutput()">
+            + Agregar
+          </button>
         </div>
       </div>
+    </div>
 
-
-
-        <!-- <table class="table">
-            <thead class="thead-dark">
-                <tr>
-                    <th>Id</th>
-                    <th>Output</th>
-                    <th>Borrar</th>
-                </tr>
-            </thead>
-            <tbody formArrayName="inputs">
-                <tr *ngFor="let control of outputs.controls; let i=index">
-                    <td>{{i+1}}</td>
-                    <td>
-                        <label> hola</label>
-                        <input  class="form-control" 
-                                type="text"
-                                [formControlName] = "i"
-                        >
-                    </td> 
-                    
-                    <td>
-                        <button class="btn btn-danger"
-                                (click)="borrarOutput(i)">
-                            Borrar
-                        </button>
-                    </td>
-                </tr>
-            </tbody>
-        </table>
-  
-        <button     type="button" 
-                    class="btn btn-primary btn-block mb-5"
-                    (click)="agregarOutput()">
-            + Agregar 
-        </button>    -->
-        
-
-      
-
-    
-</div>
-
-
-
-    
-
-     
-
-  </div>
-    
 
 
     <div class="form-group row">
-        <label class="col-2 col-form-label">&nbsp;</label>
-        <div class="input-group col">
-            <button type="submit" class="btn btn-outline-primary btn-block">
-                Guardar
-            </button>
-        </div>
+      <div class="input-group col">
+        <button type="submit" class="btn btn-outline-primary btn-block">
+          Guardar
+        </button>
+      </div>
     </div>
-</div>
+  </div>
 </form>
 
 <hr>
