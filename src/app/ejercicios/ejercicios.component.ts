@@ -25,6 +25,7 @@ export class EjerciciosComponent implements OnInit {
     this.esEditar();
     if(this.router.url.includes('read')){
       this.isReadOnly = true;
+      this.titulo = "Ver ejercicio"
     }else{
       this.isReadOnly = false;
     }
@@ -246,7 +247,7 @@ export class EjerciciosComponent implements OnInit {
       }
       
       console.log("Se pudo");
-      this.ngZone.run(() => this.router.navigate(["/home"]));      
+      this.ngZone.run(() => this.router.navigate(["/admin"]));      
     }//else
    
     
