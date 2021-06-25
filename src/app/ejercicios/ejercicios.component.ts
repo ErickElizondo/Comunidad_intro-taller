@@ -1,6 +1,6 @@
 import { Component, NgZone, OnInit } from '@angular/core';
 import { FormArray, FormBuilder, FormGroup, Validators } from '@angular/forms';
-import {Router} from "@angular/router";
+import {ActivatedRoute, Router} from "@angular/router";
 import { EjerciciosService } from '../ejercicios.service';
 
 @Component({
@@ -10,14 +10,18 @@ import { EjerciciosService } from '../ejercicios.service';
 })
 export class EjerciciosComponent implements OnInit {
   forma : FormGroup;
-  constructor(private fb:FormBuilder, private ngZone: NgZone, private router: Router, private crud:EjerciciosService) { 
+  id: string | null;
+  titulo = "Agregar ejercicio";
+  constructor(private fb:FormBuilder, private ngZone: NgZone, private router: Router, private crud:EjerciciosService, private aRoute: ActivatedRoute) { 
     this.crearFormulario();
     this.setDefaults();
+    this.id = this.aRoute.snapshot.paramMap.get('id');
+    console.log(this.id)
   }
 
   
   ngOnInit(): void {      
-    
+    this.esEditar();
   }
 
   get inputs(){
@@ -44,7 +48,7 @@ export class EjerciciosComponent implements OnInit {
   createExample(){
     return this.fb.group({
       call: ['', [Validators.required, ]],
-      comment: ['', [Validators.required, ]],
+      comment: [],
       result: ['', [Validators.required, ]]
     })
   }
@@ -223,14 +227,45 @@ export class EjerciciosComponent implements OnInit {
       
     }else{
       let data: any = this.forma.value;
-      data.fechaCreacion = new Date();
+      
       data.fechaActualizacion = new Date();
       console.log(data);
-      //this.crud.agregarEjercicio(data);
+      if(this.id!==null){
+        this.crud.actualizarEjercicio(this.id, data).then(() => {
+          this.router.navigate(['/admin']);
+        })
+      }else{
+        data.fechaCreacion = new Date();
+        this.crud.agregarEjercicio(data);
+      }
+      
       console.log("Se pudo");
       this.ngZone.run(() => this.router.navigate(["/home"]));      
     }//else
    
     
+  }
+
+  esEditar() {
+    this.titulo = 'Editar Empleado'
+    if (this.id !== null) {
+      this.crud.getEjercicio(this.id).subscribe(data => {
+        this.forma.reset(
+          {
+            call: data.payload.data()['call'],
+            creator: data.payload.data()['creator'],
+            created: data.payload.data()['created'],
+            code: data.payload.data()['code'],
+            details: data.payload.data()['details'],  
+            level: data.payload.data()['level'],      
+            name: data.payload.data()['name'],
+            section: data.payload.data()['section'],
+            solution:data.payload.data()['solution'],
+            examples: data.payload.data()['examples']
+            
+            
+          });
+      })
+    }
   }
 }
