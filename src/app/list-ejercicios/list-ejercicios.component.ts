@@ -29,7 +29,7 @@ export class ListEjerciciosComponent implements OnInit {
   eliminarEjercicio(id: string) {
     this._ejercicioService.eliminarEjercicio(id).then(() => {
       console.log('Ejercicio eliminado con exito');
-      
+
     }).catch(error => {
       console.log(error);
     })

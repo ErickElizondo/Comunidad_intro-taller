@@ -1,50 +1,50 @@
-<div class="container px-4 px-lg-5">
-  <div class="row my-4">
-    <div class="col card h-100">
-      <div class="card-body">
-        <h2 class="card-title">Card Two</h2>
-        <p class="card-text">Lorem ipsum dolor sit amet, consectetur adipisicing elit. Quod tenetur ex natus at dolorem enim! Nesciunt pariatur voluptatem sunt quam eaque, vel, non in id dolore voluptates quos eligendi labore.</p>
-      </div>
-      <div class="card-footer"><a class="btn btn-primary btn-sm" href="#!">More Info</a></div>
-    </div>
-    <div class="col">
-        <h1 class="font-weight-light">asd</h1>
-        <p>Test! Test! Test! Test! Test! Test! Test!</p>
-        <a class="btn btn-primary" href="#!">Test!</a>
-    </div>
+<app-loading *ngIf="loading"></app-loading>
+
+<div *ngIf="errorFlag" class="alert alert-danger animated fadeIn">
+  <h3>Error</h3>
+  <p >
+      {{ errorMessage }}
+  </p>
 </div>
 
-  <!-- Call to Action-->
-  <div class="card text-white bg-secondary my-5 py-4 text-center">
-      <div class="card-body"><p class="text-white m-0">asd</p></div>
-  </div>
-  <!-- Content Row-->
+<h3 class="text-white font-weight-bold">Categorias</h3>
+<hr>
+<h4><span class="badge badge-pill badge-danger">Árboles</span></h4>
+<app-tarjetas [items]="ejerciciosA"></app-tarjetas>
+<hr>
+<h4><span class="badge badge-pill badge-info">Listas, vectores y matrices</span></h4>
+<app-tarjetas [items]="ejerciciosB"></app-tarjetas>
+<hr>
+<h4><span class="badge badge-pill badge-success">Algoritmos numéricos</span></h4>
+<app-tarjetas [items]="ejerciciosC"></app-tarjetas>
 
-  <div class="row mb-4">
-    <div class="col card h-100">
-      <div class="card-body">
-        <h2 class="card-title">Card Two</h2>
-        <p class="card-text">Lorem ipsum dolor sit amet, consectetur adipisicing elit. Quod tenetur ex natus at dolorem enim! Nesciunt pariatur voluptatem sunt quam eaque, vel, non in id dolore voluptates quos eligendi labore.</p>
-      </div>
-      <div class="card-footer"><a class="btn btn-primary btn-sm" href="#!">More Info</a></div>
-    </div>
+<!-- <div class="row">
     <div class="col">
-      <div class="col card h-100">
-        <div class="card-body">
-          <h2 class="card-title">Card Two</h2>
-          <p class="card-text">Lorem ipsum dolor sit amet, consectetur adipisicing elit. Quod tenetur ex natus at dolorem enim! Nesciunt pariatur voluptatem sunt quam eaque, vel, non in id dolore voluptates quos eligendi labore.</p>
+      <div class="card text-center">
+        <div class="card-header">
+          <h3><span class="badge bg-primary">Definicion</span></h3>
         </div>
-        <div class="card-footer"><a class="btn btn-primary btn-sm" href="#!">More Info</a></div>
+        <div class="card-body">
+          <ul>
+            <li *ngFor="let item of items | async">
+              <h4><span class="badge bg-info">Code:</span>{{ item.code }} <span class="badge bg-danger">Name:</span>{{
+                item.name }}</h4>
+            </li>
+          </ul>
+        </div>
       </div>
     </div>
+
     <div class="col">
-      <div class="col card h-100">
-        <div class="card-body">
-          <h2 class="card-title">Card Two</h2>
-          <p class="card-text">Lorem ipsum dolor sit amet, consectetur adipisicing elit. Quod tenetur ex natus at dolorem enim! Nesciunt pariatur voluptatem sunt quam eaque, vel, non in id dolore voluptates quos eligendi labore.</p>
+      <div class="card text-center">
+        <div class="card-header">
+          <h3><span class="badge bg-success">Solucion</span></h3>
         </div>
-        <div class="card-footer"><a class="btn btn-primary btn-sm" href="#!">More Info</a></div>
+        <div class="card-body">
+          <h5 class="card-title">Special title treatment</h5>
+          <p class="card-text">With supporting text below as a natural lead-in to additional content.</p>
+          <a href="#" class="btn btn-primary">Go somewhere</a>
+        </div>
       </div>
     </div>
-  </div>
-</div>
+  </div> -->

@@ -15,6 +15,9 @@ import { HomeComponent } from './home/home.component';
 import { EjerciciosComponent } from './ejercicios/ejercicios.component';
 import { TarjetasComponent } from './components/tarjetas/tarjetas.component';
 import { ListEjerciciosComponent } from './list-ejercicios/list-ejercicios.component';
+import { LoadingComponent } from './components/loading/loading.component';
+import { RatingComponent } from './components/rating/rating.component';
+import { EjercicioComponent } from './components/ejercicio/ejercicio.component';
 
 @NgModule({
   declarations: [
@@ -23,6 +26,9 @@ import { ListEjerciciosComponent } from './list-ejercicios/list-ejercicios.compo
     EjerciciosComponent,
     ListEjerciciosComponent,
     TarjetasComponent,
+    LoadingComponent,
+    RatingComponent,
+    EjercicioComponent,
   ],
   imports: [
     BrowserModule,

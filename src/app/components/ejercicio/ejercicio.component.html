@@ -1,0 +1,56 @@
+<app-loading *ngIf="loading"></app-loading>
+
+<div *ngIf="errorFlag" class="alert alert-danger animated fadeIn">
+    <h3>Error</h3>
+    <p>
+        {{ errorMessage }}
+    </p>
+</div>
+<hr>
+<div class="card-deck">
+    <div class="card animated fadeIn" *ngIf="!loading">
+        <div class="card-header">
+            <h3><span class="badge badge-primary">Definicion</span></h3>
+        </div>
+        <div class="card-body">
+            <h5 class="card-title">{{ejercicio.name}}</h5>
+            <h6 class="card-subtitle mb-2 text-muted">{{ ejercicio.details }}</h6>
+            <hr>
+            <div class="card-text font-weight-bold">Ejemplos:</div>
+            <div class="card-text mt-3" *ngFor="let item of ejercicio.examples">
+                <p>
+                    <span class="font-weight-bold">Llamada:</span> {{ item.call }}
+                    <br>
+                    <span class="font-weight-bold">Resultado:</span> {{ item.result }}
+                </p>
+                <br>
+            </div>
+        </div>
+    </div>
+    <div class="card animated fadeIn" *ngIf="!loading">
+        <div class="card-header">
+            <h3><span class="badge badge-success">Solucion</span></h3>
+        </div>
+        <div class="card-body">
+            <h5 class="card-title">{{ejercicio.name}}</h5>
+            <div class="card-text">
+                <pre>
+                    <span class="font-weight-bold text-success">Entrada:</span> 
+                        <span class="font-weight-bold">{{ ejercicio.solution.inputs[0].name }}</span>: {{ ejercicio.solution.inputs[0].type }}
+                    <span class="font-weight-bold text-danger">Salida:</span>  
+                        <span class="font-weight-bold">{{ ejercicio.solution.outputs[0].name }}</span>: {{ ejercicio.solution.outputs[0].type }}
+                </pre>
+                <hr>
+                <div class="card text-white bg-secondary">
+                    <div class="card-body">
+                        <pre>
+                            <h5 class="card-title">
+                                {{ ejercicio.solution.code }}
+                            </h5>
+                        </pre>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>

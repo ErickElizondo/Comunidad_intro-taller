@@ -1,12 +1,38 @@
 <div class="card-columns m-5 animated fadeIn">
-  <div (click)="verArtista(item)" *ngFor="let item of items" class="card puntero">
-      <div class="card-body">
-          <h5 class="card-title"> {{ item.name }} </h5>
-          <p class="card-text">
-              <span *ngFor="let artista of item.artists" class="badge badge-pill badge-primary">
-                  {{ artista.name }}
-              </span>
-          </p>
-      </div>
-  </div>
+    <div (click)="verEjercicio(item)" *ngFor="let item of items | slice:0:3; let i=index" class="card puntero text-white bg-dark mb-3">
+        <img class="card-img-top" *ngIf="item.section == 'Árboles'" src="../assets/tree.jpg" slot="start">
+        <img class="card-img-top" *ngIf="item.section == 'Listas, vectores y matrices'" src="../assets/vector.jpg"
+            slot="start">
+        <img class="card-img-top" *ngIf="item.section == 'Algoritmos numéricos'" src="../assets/list.jpg" slot="start"> 
+        <div class="card-body">
+            <h4 class="card-title" *ngIf="item.section == 'Árboles'"> <span class="badge badge-danger">{{ item.name }}</span> </h4>
+            <h4 class="card-title" *ngIf="item.section == 'Listas, vectores y matrices'"> <span class="badge badge-info">{{ item.name }}</span> </h4>
+            <h4 class="card-title" *ngIf="item.section == 'Algoritmos numéricos'"> <span class="badge badge-success">{{ item.name }}</span> </h4>
+            <p class="card-text">
+                {{ item.details }}
+            </p>
+        </div>
+        <div class="card-footer">Estrellas</div>
+    </div>
 </div>
+
+<!-- <div class="card-columns m-5 animated fadeIn">
+    <div (click)="verEjercicio(item)" *ngFor="let item of items" class="card puntero text-white bg-dark mb-3" style="min-width: 18rem;">
+        <div class="row no-gutters">
+            <div class="col-md-4">
+                <img class="card-img" *ngIf="item.section == 'Árboles'" src="../assets/tree.jpg" alt="...">
+                <img class="card-img" *ngIf="item.section == 'Listas, vectores y matrices'" src="../assets/vector.jpg"
+                alt="...">
+                <img class="card-img" *ngIf="item.section == 'Algoritmos numéricos'" src="../assets/list.jpg" alt="...">
+            </div>
+            <div class="col-md-8">
+                <div class="card-body">
+                    <h5 class="card-title"><span class="badge badge-danger">{{ item.name }}</span></h5>
+                    <p class="card-text">
+                        {{ item.details }}
+                    </p>
+                </div>
+            </div>
+        </div>
+    </div>
+</div> -->

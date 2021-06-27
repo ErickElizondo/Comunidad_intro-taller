@@ -1,24 +1,25 @@
 <div class="container">
-  
+
   <nav>
     <ul>
       <li>
-        <input class="form-control selectH w-75 mt-2" type="search" aria-label="Search" id="searchI" placeholder="Buscar">
+        <input class="form-control selectH w-75 mt-2" type="search" aria-label="Search" id="searchI"
+          placeholder="Buscar">
       </li>
     </ul>
     <ul>
-      <li *ngIf="!userStatus"><a class="text-white nounderline" [routerLink]="[ '/signup' ]">Signup</a></li> 
+      <li *ngIf="!userStatus"><a class="text-white nounderline" [routerLink]="[ '/signup' ]">Signup</a></li>
       <li *ngIf="!userStatus"><a class="text-white nounderline" [routerLink]="[ '/login' ]">Login</a></li>
       <li *ngIf="!userStatus"><a class="text-white nounderline" [routerLink]="[ '/home' ]">Home</a></li>
-      <li *ngIf="userStatus && userStatus.role === 'admin'"><a class="text-white nounderline" [routerLink]="[ '/admin' ]">Admin</a></li>
-      <li *ngIf="userStatus && userStatus.role === 'user'"><a [routerLink]="[ '/student' ]">Student</a></li>
+      <li *ngIf="userStatus && userStatus.role === 'admin'"><a class="text-white nounderline"
+          [routerLink]="[ '/admin' ]">Admin</a></li>
       <li *ngIf="userStatus"><button class="logout" (click)="logout()">Logout</button></li>
-      
+
     </ul>
-    
+
   </nav>
-  
+
   <main>
     <router-outlet></router-outlet>
   </main>
-  </div>
+</div>

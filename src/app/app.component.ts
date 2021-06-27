@@ -13,23 +13,19 @@ export class AppComponent implements OnInit {
   data = [] //Aquí se añade el JSON que mandó el profe, o bien construir uno para añadirlo a la db, siempre y cuando
   //cumpla con la estructura establecida.
 
-
-  constructor(private firebaseService: FirebaseService, private firestore: AngularFirestore){}
+  constructor(private firebaseService: FirebaseService, private firestore: AngularFirestore) { }
 
   userStatus: any = this.firebaseService;
 
-  logout(){
+  logout() {
     this.firebaseService.logOut();
-    
+
   }
 
-
-  
-
-  ngOnInit(){
+  ngOnInit() {
     this.firebaseService.userChanges();
 
     this.firebaseService.userStatusChanges.subscribe(x => this.userStatus = x);
-    console.log(this.userStatus)    
+    console.log(this.userStatus)
   }
 }

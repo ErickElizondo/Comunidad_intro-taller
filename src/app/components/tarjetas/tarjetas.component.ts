@@ -15,15 +15,10 @@ export class TarjetasComponent implements OnInit {
   ngOnInit(): void {
   }
 
-  verArtista(item: any){
-    let artistId;
+  verEjercicio(item: any){
+    let ejercicioId;
   
-    if (item.type === 'artist'){
-      artistId = item.id;
-    }else {
-      artistId = item.artists[0].id;
-    }
-  
-    this.router.navigate(['/artist', artistId]);  
+    ejercicioId = item.id;
+    this.router.navigate(['/ejercicio', ejercicioId]);  
   }
 }

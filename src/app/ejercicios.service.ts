@@ -13,7 +13,7 @@ export class EjerciciosService {
   }
 
   getEjercicios(): Observable<any> {
-    return this.firestore.collection('ejercicios', ref => ref.orderBy('fechaCreacion', 'asc')).snapshotChanges();
+    return this.firestore.collection('ejercicios', ref => ref.orderBy('fechaCreacion', 'desc')).snapshotChanges();
   }
 
   eliminarEjercicio(id: string): Promise<any> {
