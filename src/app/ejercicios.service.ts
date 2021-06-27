@@ -16,6 +16,14 @@ export class EjerciciosService {
     return this.firestore.collection('ejercicios', ref => ref.orderBy('fechaCreacion', 'desc')).snapshotChanges();
   }
 
+  getEjerciciosTerm(termino: string): Observable<any> {
+    return this.firestore.collection('ejercicios', ref => ref.orderBy("name").startAt(termino).endAt(termino + "\uf8ff")).snapshotChanges();
+  }
+
+  getCategoria(section: string): Observable<any> {
+    return this.firestore.collection('ejercicios', ref => ref.where("section", "==", section)).snapshotChanges();
+  }
+
   eliminarEjercicio(id: string): Promise<any> {
     return this.firestore.collection('ejercicios').doc(id).delete();
   }

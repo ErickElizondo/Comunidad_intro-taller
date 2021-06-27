@@ -1,5 +1,5 @@
 <div class="card-columns m-5 animated fadeIn">
-    <div (click)="verEjercicio(item)" *ngFor="let item of items | slice:0:3; let i=index" class="card puntero text-white bg-dark mb-3">
+    <div (click)="verEjercicio(item)" *ngFor="let item of items; let i=index" class="card puntero text-white bg-dark mb-3">
         <img class="card-img-top" *ngIf="item.section == 'Árboles'" src="../assets/tree.jpg" slot="start">
         <img class="card-img-top" *ngIf="item.section == 'Listas, vectores y matrices'" src="../assets/vector.jpg"
             slot="start">

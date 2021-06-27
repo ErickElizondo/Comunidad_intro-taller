@@ -7,15 +7,15 @@
   </p>
 </div>
 
-<h3 class="text-white font-weight-bold">Categorias</h3>
+<h3 class="text-white font-weight-bold mt-2">Categorias</h3>
 <hr>
-<h4><span class="badge badge-pill badge-danger">Árboles</span></h4>
+<span class="badge badge-pill badge-danger badge-title puntero" (click)="verCategoria('Árboles')">Árboles</span>
 <app-tarjetas [items]="ejerciciosA"></app-tarjetas>
 <hr>
-<h4><span class="badge badge-pill badge-info">Listas, vectores y matrices</span></h4>
+<span class="badge badge-pill badge-info badge-title puntero" (click)="verCategoria('Listas, vectores y matrices')">Listas, vectores y matrices</span>
 <app-tarjetas [items]="ejerciciosB"></app-tarjetas>
 <hr>
-<h4><span class="badge badge-pill badge-success">Algoritmos numéricos</span></h4>
+<span class="badge badge-pill badge-success badge-title puntero" (click)="verCategoria('Algoritmos numéricos')">Algoritmos numéricos</span>
 <app-tarjetas [items]="ejerciciosC"></app-tarjetas>
 
 <!-- <div class="row">

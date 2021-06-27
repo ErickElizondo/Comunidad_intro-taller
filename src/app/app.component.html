@@ -2,9 +2,8 @@
 
   <nav>
     <ul>
-      <li>
-        <input class="form-control selectH w-75 mt-2" type="search" aria-label="Search" id="searchI"
-          placeholder="Buscar">
+      <li *ngIf="!userStatus">
+        <a class="text-white nounderline" [routerLink]="[ '/search' ]">Search</a>
       </li>
     </ul>
     <ul>

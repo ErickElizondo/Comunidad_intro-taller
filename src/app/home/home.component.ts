@@ -1,4 +1,5 @@
 import { Component, OnInit } from '@angular/core';
+import { Router } from '@angular/router';
 import { EjerciciosService } from "src/app/ejercicios.service";
 
 @Component({
@@ -18,7 +19,7 @@ export class HomeComponent implements OnInit {
   errorFlag: boolean;
   errorMessage: string;
 
-  constructor(private ejercicio_Service: EjerciciosService) {
+  constructor(private ejercicio_Service: EjerciciosService, private router: Router) {
     this.errorFlag = false;
     this.loading = true;
   }
@@ -36,12 +37,24 @@ export class HomeComponent implements OnInit {
         this.ejerciciosA = this.ejercicios.filter(ejercicio => ejercicio.section == "Árboles");
         this.ejerciciosB = this.ejercicios.filter(ejercicio => ejercicio.section == "Listas, vectores y matrices");
         this.ejerciciosC = this.ejercicios.filter(ejercicio => ejercicio.section == "Algoritmos numéricos");
+
+        this.ejerciciosA = this.ejerciciosA.slice(0, 3);
+        this.ejerciciosB = this.ejerciciosB.slice(0, 3);
+        this.ejerciciosC = this.ejerciciosC.slice(0, 3);
+
       }, (errorService) => {
         console.log("Error");
         this.errorFlag = true;
         this.loading = false;
         this.errorMessage = errorService.error.error.message;
       });
+  }
+
+  verCategoria(section: string) {
+    let sectionEjercicio;
+
+    sectionEjercicio = section;
+    this.router.navigate(['/categoria', section]);
   }
 
   ngOnInit() {

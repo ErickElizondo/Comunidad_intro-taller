@@ -1,0 +1,13 @@
+<app-loading *ngIf="loading"></app-loading>
+
+<div *ngIf="errorFlag" class="alert alert-danger animated fadeIn">
+  <h3>Error</h3>
+  <p >
+      {{ errorMessage }}
+  </p>
+</div>
+
+<span class="badge badge-pill badge-danger badge-title" *ngIf="categoria == 'Árboles'">{{ categoria }}</span>
+<span class="badge badge-pill badge-info badge-title" *ngIf="categoria == 'Listas, vectores y matrices'">{{ categoria }}</span>
+<span class="badge badge-pill badge-success badge-title" *ngIf="categoria == 'Algoritmos numéricos'">{{ categoria }}</span>
+<app-tarjetas [items]="ejercicios"></app-tarjetas>

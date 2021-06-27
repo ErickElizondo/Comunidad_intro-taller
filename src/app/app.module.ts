@@ -18,6 +18,8 @@ import { ListEjerciciosComponent } from './list-ejercicios/list-ejercicios.compo
 import { LoadingComponent } from './components/loading/loading.component';
 import { RatingComponent } from './components/rating/rating.component';
 import { EjercicioComponent } from './components/ejercicio/ejercicio.component';
+import { CategoriaComponent } from './components/categoria/categoria.component';
+import { SearchComponent } from './components/search/search.component';
 
 @NgModule({
   declarations: [
@@ -29,6 +31,8 @@ import { EjercicioComponent } from './components/ejercicio/ejercicio.component';
     LoadingComponent,
     RatingComponent,
     EjercicioComponent,
+    CategoriaComponent,
+    SearchComponent,
   ],
   imports: [
     BrowserModule,

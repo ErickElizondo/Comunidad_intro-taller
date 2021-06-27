@@ -1,0 +1,17 @@
+<div class="row">
+    <div class="col">
+        <input #termino type="text" class="form-control" (keyup)="buscar(termino.value)"
+            placeholder="buscar ejercicio...">
+    </div>
+</div>
+
+<app-loading class="m-5" *ngIf="loading"></app-loading>
+
+<div *ngIf="errorFlag" class="alert alert-danger animated fadeIn">
+    <h3>Error</h3>
+    <p>
+        {{ errorMessage }}
+    </p>
+</div>
+
+<app-tarjetas *ngIf="termino.value != ''" [items]="ejercicios"></app-tarjetas>
