@@ -1,12 +1,13 @@
 import { Injectable } from '@angular/core';
 import { AngularFirestore } from '@angular/fire/firestore';
+import { AngularFireStorage } from '@angular/fire/storage';
 import { Observable } from 'rxjs';
 @Injectable({
   providedIn: 'root'
 })
 export class EjerciciosService {
 
-  constructor(private firestore: AngularFirestore) { }
+  constructor(private firestore: AngularFirestore, private storage: AngularFireStorage) { }
 
   agregarEjercicio(empleado: any): Promise<any> {
     return this.firestore.collection('ejercicios').add(empleado);
@@ -39,4 +40,16 @@ export class EjerciciosService {
   actualizarLevel(id: string, data:string): Promise<any> {
     return this.firestore.collection('ejercicios').doc(id).update({level: data});
   }
+
+  public tareaCloudStorage(nombreArchivo: string, datos: any){
+    return this.storage.upload(nombreArchivo, datos);
+  }
+
+  public referenciaCloudStorage(nombreArchivo: string){
+    console.log("jaja");
+    console.log(this.storage.ref(nombreArchivo));
+    console.log("jeje");
+    return this.storage.ref(nombreArchivo);
+  }
+
 }

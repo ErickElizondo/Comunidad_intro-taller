@@ -20,6 +20,7 @@ import { LoadingComponent } from './components/loading/loading.component';
 import { EjercicioComponent } from './components/ejercicio/ejercicio.component';
 import { CategoriaComponent } from './components/categoria/categoria.component';
 import { SearchComponent } from './components/search/search.component';
+import { AngularFireStorageModule} from '@angular/fire/storage'
 import { HighlightModule, HIGHLIGHT_OPTIONS } from 'ngx-highlightjs';
 
 @NgModule({
@@ -44,6 +45,7 @@ import { HighlightModule, HIGHLIGHT_OPTIONS } from 'ngx-highlightjs';
     AppRoutingModule,
     HighlightModule,
     NgbModule
+    AngularFireStorageModule
   ],
   providers: [
     {

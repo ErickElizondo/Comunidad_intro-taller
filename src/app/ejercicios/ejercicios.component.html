@@ -127,13 +127,14 @@
         <hr>
         <div class="form-col" formGroupName="solution">
           <h3>Code</h3>
-          <div class="col mb-5">
+          <div class="col mb-5" [hidden] = "isReadOnly">
             <textarea type="text" class="form-control input-group " placeholder="code" formControlName="code"
               [class.is-invalid]="codeInvalido" [readOnly]="isReadOnly"></textarea>
             <small *ngIf="codeInvalido" class="text-danger">
               Es un campo obligatorio
             </small>
           </div>
+          <pre><code class="text-left" [highlight]="forma.value.solution.code"></code></pre>
           <h3>Inputs</h3>
           <div class="col">
             <table class="table table-hover">
@@ -242,5 +243,30 @@
   </form>
 
 
-  
+
   <hr>
+
+  <div class="contenedor">
+    <div class="contenedor_formulario">
+      <h1 class="is-size-1">Subir archivos a Cloud Storage</h1>
+      <p class="download" *ngIf="finalizado">URL de descarga: <a href="{{ URLPublica }}" target="_blank">Descargar</a></p>
+      <form [formGroup]="archivoForm" (ngSubmit)="subirArchivo()">
+        <div class="file has-name is-boxed">
+          <label class="file-label">
+            <input class="file-input" type="file" formControlName="archivo" (change)="cambioArchivo($event)">
+            <span class="file-cta">
+              <span class="file-label">
+                Elegir un archivo…
+              </span>
+            </span>
+            <span class="file-name">
+              {{ mensajeArchivo }}
+            </span>
+          </label>
+        </div>
+        <hr>
+        <progress *ngIf="porcentaje > 0 && porcentaje < 100" class="progress is-large is-success" value="{{porcentaje}}" max="100">{{porcentaje}}%</progress>
+        <button [ngClass]="{'button': true, 'btn-success': true, 'btn-large': true, 'is-loading': porcentaje > 0 && porcentaje < 100}" [disabled]="!archivoForm.valid && (porcentaje > 0 && porcentaje < 100)">Subir archivo</button>
+      </form>
+    </div>
+  </div>
