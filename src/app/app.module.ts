@@ -44,7 +44,7 @@ import { HighlightModule, HIGHLIGHT_OPTIONS } from 'ngx-highlightjs';
     AngularFireAuthModule,
     AppRoutingModule,
     HighlightModule,
-    NgbModule
+    NgbModule,
     AngularFireStorageModule
   ],
   providers: [
