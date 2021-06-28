@@ -1,5 +1,6 @@
 import { BrowserModule } from '@angular/platform-browser';
 import { NgModule } from '@angular/core';
+import { NgbModule } from '@ng-bootstrap/ng-bootstrap';
 
 import { AppComponent } from './app.component';
 import { FormsModule, ReactiveFormsModule } from "@angular/forms";
@@ -16,7 +17,6 @@ import { EjerciciosComponent } from './ejercicios/ejercicios.component';
 import { TarjetasComponent } from './components/tarjetas/tarjetas.component';
 import { ListEjerciciosComponent } from './list-ejercicios/list-ejercicios.component';
 import { LoadingComponent } from './components/loading/loading.component';
-import { RatingComponent } from './components/rating/rating.component';
 import { EjercicioComponent } from './components/ejercicio/ejercicio.component';
 import { CategoriaComponent } from './components/categoria/categoria.component';
 import { SearchComponent } from './components/search/search.component';
@@ -30,7 +30,6 @@ import { HighlightModule, HIGHLIGHT_OPTIONS } from 'ngx-highlightjs';
     ListEjerciciosComponent,
     TarjetasComponent,
     LoadingComponent,
-    RatingComponent,
     EjercicioComponent,
     CategoriaComponent,
     SearchComponent,
@@ -43,7 +42,8 @@ import { HighlightModule, HIGHLIGHT_OPTIONS } from 'ngx-highlightjs';
     AngularFirestoreModule,
     AngularFireAuthModule,
     AppRoutingModule,
-    HighlightModule
+    HighlightModule,
+    NgbModule
   ],
   providers: [
     {

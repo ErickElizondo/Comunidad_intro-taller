@@ -15,7 +15,18 @@
             <h3><span class="badge badge-primary">Definicion</span></h3>
         </div>
         <div class="card-body">
-            <h5 class="card-title">{{ejercicio.name}}</h5>
+            <div class="d-flex bd-highlight mb-3">
+                <div class="mr-auto p-2 bd-highlight">
+                    <h5 class="card-title">{{ejercicio.name}}</h5>
+                </div>
+                <div class="p-2 bd-highlight">
+                    <ngb-rating [(rate)]="selected" [max]="5" (hover)="hovered=$event" (leave)="hovered=0">
+                        <ng-template let-fill="fill" let-index="index">
+                            <span class="star" (click)="mostrar(hovered)" [class.filled]="fill === 100" [class.bad]="index < 2">&#9733;</span>
+                        </ng-template>
+                    </ngb-rating>
+                </div>
+            </div>
             <h6 class="card-subtitle mb-2 text-muted">{{ ejercicio.details }}</h6>
             <hr>
             <div class="card-text font-weight-bold">Ejemplos:</div>

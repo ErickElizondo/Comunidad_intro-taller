@@ -18,6 +18,9 @@ export class EjercicioComponent implements OnInit {
   errorFlag: boolean;
   errorMessage: any;
 
+  selected: string;
+  hovered: string;
+
   constructor(private ejercicio_Service: EjerciciosService, private router: ActivatedRoute) {
     this.idEjercicio = this.router.snapshot.paramMap.get('id');
     this.getEjercicio(this.idEjercicio);
@@ -32,6 +35,7 @@ export class EjercicioComponent implements OnInit {
           ...data.payload.data()
         }
         this.loading = false;
+        this.selected = this.ejercicio.level;
         console.log(this.ejercicio);
       }, (errorService) => {
         console.log("Error");
@@ -49,6 +53,12 @@ export class EjercicioComponent implements OnInit {
       top: '{...}',
       value: '{...}'
     }
+  }
+
+  mostrar(selected: string) {
+    console.log(selected);
+    
+    this.ejercicio_Service.actualizarLevel(this.ejercicio.id, selected);
   }
 
   ngOnInit() {

@@ -35,4 +35,8 @@ export class EjerciciosService {
   actualizarEjercicio(id: string, data:any): Promise<any> {
     return this.firestore.collection('ejercicios').doc(id).update(data);
   }
+
+  actualizarLevel(id: string, data:string): Promise<any> {
+    return this.firestore.collection('ejercicios').doc(id).update({level: data});
+  }
 }
