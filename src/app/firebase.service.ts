@@ -12,7 +12,7 @@ export class FirebaseService {
   constructor(private ngZone: NgZone, private afAuth: AngularFireAuth, private firestore: AngularFirestore, private router: Router) { }
 
   public currentUser: any;
-  public userStatus: string;
+  public userStatus: string = "";
   public userStatusChanges: BehaviorSubject<string> = new BehaviorSubject<string>(this.userStatus);
 
   setUserStatus(userStatus: any): void {

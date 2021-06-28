@@ -20,6 +20,7 @@ import { RatingComponent } from './components/rating/rating.component';
 import { EjercicioComponent } from './components/ejercicio/ejercicio.component';
 import { CategoriaComponent } from './components/categoria/categoria.component';
 import { SearchComponent } from './components/search/search.component';
+import { HighlightModule, HIGHLIGHT_OPTIONS } from 'ngx-highlightjs';
 
 @NgModule({
   declarations: [
@@ -41,9 +42,20 @@ import { SearchComponent } from './components/search/search.component';
     AngularFireModule.initializeApp(environment.firebase),
     AngularFirestoreModule,
     AngularFireAuthModule,
-    AppRoutingModule
+    AppRoutingModule,
+    HighlightModule
   ],
-  providers: [],
+  providers: [
+    {
+      provide: HIGHLIGHT_OPTIONS,
+      useValue: {
+        coreLibraryLoader: () => import('highlight.js/lib/core'),
+        languages: {
+          python: () => import('highlight.js/lib/languages/python')
+        }
+      }
+    }
+  ],
   bootstrap: [AppComponent]
 })
 export class AppModule { }

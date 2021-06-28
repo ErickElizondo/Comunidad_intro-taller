@@ -43,15 +43,7 @@
                         <span class="font-weight-bold">{{ ejercicio.solution.outputs[0].name }}</span>: {{ ejercicio.solution.outputs[0].type }}
                 </pre>
                 <hr>
-                <div class="card text-white bg-secondary">
-                    <div class="card-body">
-                        <pre>
-                            <h5 class="card-title">
-                                {{ ejercicio.solution.code }}
-                            </h5>
-                        </pre>
-                    </div>
-                </div>
+                <pre><code [highlight]="ejercicio.solution.code" (highlighted)="onHighlight($event)"></code></pre>
             </div>
         </div>
     </div>

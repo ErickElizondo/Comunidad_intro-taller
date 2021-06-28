@@ -1,5 +1,6 @@
 import { Component, OnInit } from '@angular/core';
 import { ActivatedRoute } from '@angular/router';
+import { HighlightResult } from 'ngx-highlightjs';
 import { EjerciciosService } from 'src/app/ejercicios.service';
 
 @Component({
@@ -10,6 +11,7 @@ import { EjerciciosService } from 'src/app/ejercicios.service';
 export class EjercicioComponent implements OnInit {
 
   idEjercicio: string;
+  response: HighlightResult;
 
   ejercicio: any = {};
   loading: boolean;
@@ -37,6 +39,16 @@ export class EjercicioComponent implements OnInit {
         this.loading = false;
         this.errorMessage = errorService.error.error.message;
       });
+  }
+
+  onHighlight(e) {
+    this.response = {
+      language: e.language,
+      relevance: e.relevance,
+      second_best: '{...}',
+      top: '{...}',
+      value: '{...}'
+    }
   }
 
   ngOnInit() {
