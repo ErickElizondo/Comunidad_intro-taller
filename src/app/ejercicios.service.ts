@@ -46,9 +46,6 @@ export class EjerciciosService {
   }
 
   public referenciaCloudStorage(nombreArchivo: string){
-    console.log("jaja");
-    console.log(this.storage.ref(nombreArchivo));
-    console.log("jeje");
     return this.storage.ref(nombreArchivo);
   }
 
