@@ -22,7 +22,6 @@ export class ListEjerciciosComponent implements OnInit {
           ...element.payload.doc.data()
         })
       });
-      console.log(this.ejercicios);
     });
   }
 

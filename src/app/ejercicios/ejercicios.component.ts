@@ -17,7 +17,6 @@ export class EjerciciosComponent implements OnInit {
     this.crearFormulario();
     this.setDefaults();
     this.id = this.aRoute.snapshot.paramMap.get('id');
-    console.log(this.id)
   }
 
 
@@ -59,7 +58,6 @@ export class EjerciciosComponent implements OnInit {
     let archivo = this.datosFormulario.get('archivo');
     let referencia = this.crud.referenciaCloudStorage(this.nombreArchivo);
     let tarea = this.crud.tareaCloudStorage(this.nombreArchivo, archivo);
-    console.log("hola");
     tarea.percentageChanges().subscribe((porcentaje) => {
       this.porcentaje = Math.round(porcentaje);
       if(this.porcentaje == 100){
@@ -70,6 +68,7 @@ export class EjerciciosComponent implements OnInit {
     setTimeout(() => {
       referencia.getDownloadURL().subscribe((URL) =>{
         this.URLPublica = URL;
+        this.forma.value.urlDownload = URL;
       });
     }, 2000)
     
@@ -155,7 +154,8 @@ export class EjerciciosComponent implements OnInit {
           ])
 
 
-        })
+        }),
+        urlDownload: ['', []]
 
       }
 
@@ -181,7 +181,8 @@ export class EjerciciosComponent implements OnInit {
 
         },
         fechaCreacion: "",
-        fechaActualizacion: ""
+        fechaActualizacion: "",
+        urlDownload: "",
 
       });
 
@@ -309,10 +310,10 @@ export class EjerciciosComponent implements OnInit {
             name: data.payload.data()['name'],
             section: data.payload.data()['section'],
             solution: data.payload.data()['solution'],
-            examples: data.payload.data()['examples']
-
-
+            examples: data.payload.data()['examples'],
+            urlDownload: data.payload.data()['urlDownload']
           });
+        this.URLPublica = data.payload.data()['urlDownload'];
       })
     }
   }

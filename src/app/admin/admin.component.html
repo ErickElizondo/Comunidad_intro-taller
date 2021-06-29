@@ -1,4 +1,4 @@
-<div class="container mt-4">
+<div class="container mt-4 animated fadeIn">
   <div class="card">
       <div class="card-body tableMax">
           <span class="h3 text-success">Listado de Ejercicios</span>
@@ -22,7 +22,7 @@
                   <td>{{ ejercicio.level }}</td>
                   <td>
                     <i class="fas fa-edit fa-lg" [routerLink]="['/admin/update/', ejercicio.id]"></i>
-                    <i (click)="eliminarEjercicio(ejercicio.id)" class="fas fa-trash-alt fa-lg text-danger"></i>
+                    <i (click)="eliminarEjercicio(ejercicio.id)" class="fas fa-trash-alt fa-lg text-danger" id="test"></i>
                     <i class="fas fa-info-circle text-success fa-lg" [routerLink]="['/admin/read/', ejercicio.id]"></i>
                   </td>
                 </tr>

@@ -229,11 +229,10 @@
     </div>
 
     <hr>
-    <div class="contenedor">
+    <a [hidden] = "!isReadOnly" [hidden] = "!URLPublica" href="{{ URLPublica }}" target="_blank">Descargar</a>
+    <div class="contenedor" [hidden] = "isReadOnly">
       <div class="formulario">
-        <h1 class="is-size-1">Subir archivos a Cloud Storage</h1>
-        <p class="download" *ngIf="finalizado">URL de descarga: <a href="{{ URLPublica }}" target="_blank">Descargar</a>
-        </p>
+        <h1 class="is-size-1">Subir archivo</h1>
         <form [formGroup]="archivoForm" (ngSubmit)="subirArchivo()">
           <div class="file has-name is-boxed">
             <label class="file-label">
@@ -247,7 +246,7 @@
           <progress *ngIf="porcentaje > 0 && porcentaje < 100" class="progress is-large is-success"
             value="{{porcentaje}}" max="100">{{porcentaje}}%</progress>
           <button
-            [ngClass]="{'button': true, 'btn-success': true, 'btn-large': true, 'is-loading': porcentaje > 0 && porcentaje < 100}"
+            [ngClass]="{'button': true, 'btn btn-outline-success btn-block': true, 'btn-large': true, 'is-loading': porcentaje > 0 && porcentaje < 100}"
             [disabled]="!archivoForm.valid && (porcentaje > 0 && porcentaje < 100)">Subir archivo</button>
         </form>
       </div>

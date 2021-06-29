@@ -26,7 +26,11 @@ export class EjerciciosService {
   }
 
   eliminarEjercicio(id: string): Promise<any> {
-    return this.firestore.collection('ejercicios').doc(id).delete();
+    
+    if(confirm("Estás seguro?")){
+      return this.firestore.collection('ejercicios').doc(id).delete();
+    }
+    
   }
 
   getEjercicio(id: string): Observable<any> {

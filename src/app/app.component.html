@@ -12,6 +12,8 @@
       <li *ngIf="!userStatus"><a class="text-white nounderline" [routerLink]="[ '/home' ]">Home</a></li>
       <li *ngIf="userStatus && userStatus.role === 'admin'"><a class="text-white nounderline"
           [routerLink]="[ '/admin' ]">Admin</a></li>
+      <li *ngIf="userStatus && userStatus.role === 'admin'"><a class="text-white nounderline"
+        [routerLink]="[ '/home' ]">Home</a></li>
       <li *ngIf="userStatus"><button class="logout" (click)="logout()">Logout</button></li>
 
     </ul>
