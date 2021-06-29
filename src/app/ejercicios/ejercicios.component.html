@@ -1,272 +1,266 @@
-<h3>{{ titulo }}
-  <hr>
-  <form [formGroup]="forma" (ngSubmit)="guardar()" class="container bg-light">
+<h3>{{ titulo }}</h3>
+<hr>
+<form [formGroup]="forma" (ngSubmit)="guardar()" class="container bg-light">
 
-    <div class="card-body">
+  <div class="card-body">
 
-      <div class="form-group row">
-        <label class="col-2 col-form-label">Call</label>
-        <div class="col">
-
-          <input class="form-control" type="text" placeholder="Call" formControlName="call"
-            [class.is-invalid]="callInvalido" [readOnly]="isReadOnly">
-          <small *ngIf="callInvalido" class="text-danger">
-            Debe tener al menos 5 letras
-          </small>
-        </div>
-      </div>
-
-      <div class="form-group row">
-        <label class="col-2 col-form-label">Creator</label>
-        <div class="col">
-
-          <input class="form-control" type="text" placeholder="Creator" formControlName="creator"
-            [class.is-invalid]="creatorInvalido" [readOnly]="isReadOnly">
-          <small *ngIf="creatorInvalido" class="text-danger">
-            Debe tener al menos 5 letras
-          </small>
-        </div>
-      </div>
-
-
-
-      <div class="form-group row">
-        <label class="col-2 col-form-label">Details</label>
-        <div class="col">
-
-          <textarea class="form-control" type="email" placeholder="Details" formControlName="details"
-            [class.is-invalid]="detailsInvalido" [readOnly]="isReadOnly"> </textarea>
-          <small *ngIf="detailsInvalido" class="text-danger">
-            Es un campo obligatorio
-          </small>
-        </div>
-      </div>
-
+    <div class="form-group row">
+      <label class="col-2 col-form-label">Call</label>
       <div class="col">
-        <h3 class="text-info">Ejemplos</h3>
-        <hr>
-        <table class="table table-hover">
-          <thead class="thead-dark">
-            <tr>
-              <th>Id</th>
-              <th>Call</th>
-              <th>Comment</th>
-              <th>Result</th>
-              <th [hidden]="isReadOnly">Borrar</th>
-            </tr>
-          </thead>
-          <tbody>
-            <tr *ngFor="let obj of examples.controls; let i= index" formArrayName="examples">
-              <ng-container [formGroupName]="i">
 
-                <td>{{i+1}}</td>
-
-                <td>
-                  <textarea class="form-control" type="text" formControlName="call" [readOnly]="isReadOnly"> </textarea>
-                </td>
-
-                <td>
-                  <textarea class="form-control" type="text" formControlName="comment"
-                    [readOnly]="isReadOnly"> </textarea>
-                </td>
-
-                <td>
-                  <textarea class="form-control" type="text" formControlName="result"
-                    [readOnly]="isReadOnly"> </textarea>
-                </td>
-
-                <td>
-                  <button class="btn btn-outline-danger btn-block" (click)="borrarExample(i)" [hidden]="isReadOnly">
-                    Borrar
-                  </button>
-                </td>
-
-
-              </ng-container>
-
-            </tr>
-          </tbody>
-
-        </table>
-
-        <button type="button" class="btn btn-outline-success btn-block mb-5" (click)="agregarExample()"
-          [hidden]="isReadOnly">
-          + Agregar
-        </button>
+        <input class="form-control" type="text" placeholder="Call" formControlName="call"
+          [class.is-invalid]="callInvalido" [readOnly]="isReadOnly">
+        <small *ngIf="callInvalido" class="text-danger">
+          Debe tener al menos 5 letras
+        </small>
       </div>
+    </div>
 
-      <div class="form-group row">
-        <label class="col-2 col-form-label">Name</label>
-        <div class="col">
-
-          <input class="form-control" type="text" placeholder="Name" formControlName="name"
-            [class.is-invalid]="nameInvalido" [readOnly]="isReadOnly">
-          <small *ngIf="nameInvalido" class="text-danger">
-            Es un campo obligatorio
-          </small>
-        </div>
-      </div>
-
-      <div class="form-group row">
-        <label class="col-2 col-form-label">Section</label>
-        <div class="col">
-
-          <input class="form-control" type="text" placeholder="Section" formControlName="section"
-            [class.is-invalid]="sectionInvalido" [readOnly]="isReadOnly">
-          <small *ngIf="sectionInvalido" class="text-danger">
-            Es un campo obligatorio
-          </small>
-        </div>
-      </div>
-
-
-
-
+    <div class="form-group row">
+      <label class="col-2 col-form-label">Creator</label>
       <div class="col">
-        <h3 class="text-info">Solución</h3>
-        <hr>
-        <div class="form-col" formGroupName="solution">
-          <h3>Code</h3>
-          <div class="col mb-5" [hidden] = "isReadOnly">
-            <textarea type="text" class="form-control input-group " placeholder="code" formControlName="code"
-              [class.is-invalid]="codeInvalido" [readOnly]="isReadOnly"></textarea>
-            <small *ngIf="codeInvalido" class="text-danger">
-              Es un campo obligatorio
-            </small>
-          </div>
-          <pre><code class="text-left" [highlight]="forma.value.solution.code"></code></pre>
-          <h3>Inputs</h3>
-          <div class="col">
-            <table class="table table-hover">
-              <thead class="thead-dark">
-                <tr>
-                  <th>Id</th>
-                  <th>Name</th>
-                  <th>Type</th>
-                  <th [hidden]="isReadOnly">Borrar</th>
-                </tr>
-              </thead>
-              <tbody>
-                <tr *ngFor="let obj of inputs.controls; let i= index" formArrayName="inputs">
-                  <ng-container [formGroupName]="i">
 
-                    <td>{{i+1}}</td>
-
-                    <td>
-                      <textarea class="form-control" type="text" formControlName="name"
-                        [readOnly]="isReadOnly"> </textarea>
-                    </td>
-
-                    <td>
-                      <textarea class="form-control" type="text" formControlName="type"
-                        [readOnly]="isReadOnly"> </textarea>
-                    </td>
-                    <td>
-                      <button class="btn btn-outline-danger btn-block" (click)="borrarInput(i)" [hidden]="isReadOnly">
-                        Borrar
-                      </button>
-                    </td>
-
-
-                  </ng-container>
-
-                </tr>
-              </tbody>
-
-            </table>
-
-            <button type="button" class="btn btn-outline-success btn-block mb-5" (click)="agregarInput()"
-              [hidden]="isReadOnly">
-              + Agregar
-            </button>
-          </div>
-
-          <h3>Outputs</h3>
-          <div class="col">
-            <table class="table table-hover">
-              <thead class="thead-dark">
-                <tr>
-                  <th>Id</th>
-                  <th>Name</th>
-                  <th>Type</th>
-                  <th [hidden]="isReadOnly">Borrar</th>
-                </tr>
-              </thead>
-              <tbody>
-                <tr *ngFor="let obj of outputs.controls; let i= index" formArrayName="outputs">
-                  <ng-container [formGroupName]="i">
-
-                    <td>{{i+1}}</td>
-
-                    <td>
-                      <textarea class="form-control" type="text" formControlName="name"
-                        [readOnly]="isReadOnly"> </textarea>
-                    </td>
-
-                    <td>
-                      <textarea class="form-control" type="text" formControlName="type"
-                        [readOnly]="isReadOnly"> </textarea>
-                    </td>
-                    <td>
-                      <button class="btn btn-outline-danger btn-block" (click)="borrarOutput(i)" [hidden]="isReadOnly">
-                        Borrar
-                      </button>
-                    </td>
-
-
-                  </ng-container>
-
-                </tr>
-              </tbody>
-
-            </table>
-
-            <button type="button" class="btn btn-outline-success btn-block mb-5" (click)="agregarOutput()"
-              [hidden]="isReadOnly">
-              + Agregar
-            </button>
-          </div>
-        </div>
+        <input class="form-control" type="text" placeholder="Creator" formControlName="creator"
+          [class.is-invalid]="creatorInvalido" [readOnly]="isReadOnly">
+        <small *ngIf="creatorInvalido" class="text-danger">
+          Debe tener al menos 5 letras
+        </small>
       </div>
+    </div>
 
 
+
+    <div class="form-group row">
+      <label class="col-2 col-form-label">Details</label>
+      <div class="col">
+
+        <textarea class="form-control" type="email" placeholder="Details" formControlName="details"
+          [class.is-invalid]="detailsInvalido" [readOnly]="isReadOnly"> </textarea>
+        <small *ngIf="detailsInvalido" class="text-danger">
+          Es un campo obligatorio
+        </small>
+      </div>
+    </div>
+
+    <div class="col">
+      <h3 class="text-info">Ejemplos</h3>
       <hr>
-      <div class="form-group row">
-        <div class="input-group col">
-          <button type="submit" class="btn btn-outline-primary btn-block" [hidden]="isReadOnly">
-            Guardar
+      <table class="table table-hover">
+        <thead class="thead-dark">
+          <tr>
+            <th>Id</th>
+            <th>Call</th>
+            <th>Comment</th>
+            <th>Result</th>
+            <th [hidden]="isReadOnly">Borrar</th>
+          </tr>
+        </thead>
+        <tbody>
+          <tr *ngFor="let obj of examples.controls; let i= index" formArrayName="examples">
+            <ng-container [formGroupName]="i">
+
+              <td>{{i+1}}</td>
+
+              <td>
+                <textarea class="form-control" type="text" formControlName="call" [readOnly]="isReadOnly"> </textarea>
+              </td>
+
+              <td>
+                <textarea class="form-control" type="text" formControlName="comment"
+                  [readOnly]="isReadOnly"> </textarea>
+              </td>
+
+              <td>
+                <textarea class="form-control" type="text" formControlName="result" [readOnly]="isReadOnly"> </textarea>
+              </td>
+
+              <td>
+                <button class="btn btn-outline-danger btn-block" (click)="borrarExample(i)" [hidden]="isReadOnly">
+                  Borrar
+                </button>
+              </td>
+
+
+            </ng-container>
+
+          </tr>
+        </tbody>
+
+      </table>
+
+      <button type="button" class="btn btn-outline-success btn-block mb-5" (click)="agregarExample()"
+        [hidden]="isReadOnly">
+        + Agregar
+      </button>
+    </div>
+
+    <div class="form-group row">
+      <label class="col-2 col-form-label">Name</label>
+      <div class="col">
+
+        <input class="form-control" type="text" placeholder="Name" formControlName="name"
+          [class.is-invalid]="nameInvalido" [readOnly]="isReadOnly">
+        <small *ngIf="nameInvalido" class="text-danger">
+          Es un campo obligatorio
+        </small>
+      </div>
+    </div>
+
+    <div class="form-group row">
+      <label class="col-2 col-form-label">Section</label>
+      <div class="col">
+
+        <input class="form-control" type="text" placeholder="Section" formControlName="section"
+          [class.is-invalid]="sectionInvalido" [readOnly]="isReadOnly">
+        <small *ngIf="sectionInvalido" class="text-danger">
+          Es un campo obligatorio
+        </small>
+      </div>
+    </div>
+
+
+
+
+    <div class="col">
+      <h3 class="text-info">Solución</h3>
+      <hr>
+      <div class="form-col" formGroupName="solution">
+        <h3>Code</h3>
+        <div class="col mb-5" [hidden]="isReadOnly">
+          <textarea type="text" class="form-control input-group " placeholder="code" formControlName="code"
+            [class.is-invalid]="codeInvalido" [readOnly]="isReadOnly"></textarea>
+          <small *ngIf="codeInvalido" class="text-danger">
+            Es un campo obligatorio
+          </small>
+        </div>
+        <pre><code class="text-left" [highlight]="forma.value.solution.code"></code></pre>
+        <h3>Inputs</h3>
+        <div class="col">
+          <table class="table table-hover">
+            <thead class="thead-dark">
+              <tr>
+                <th>Id</th>
+                <th>Name</th>
+                <th>Type</th>
+                <th [hidden]="isReadOnly">Borrar</th>
+              </tr>
+            </thead>
+            <tbody>
+              <tr *ngFor="let obj of inputs.controls; let i= index" formArrayName="inputs">
+                <ng-container [formGroupName]="i">
+
+                  <td>{{i+1}}</td>
+
+                  <td>
+                    <textarea class="form-control" type="text" formControlName="name"
+                      [readOnly]="isReadOnly"> </textarea>
+                  </td>
+
+                  <td>
+                    <textarea class="form-control" type="text" formControlName="type"
+                      [readOnly]="isReadOnly"> </textarea>
+                  </td>
+                  <td>
+                    <button class="btn btn-outline-danger btn-block" (click)="borrarInput(i)" [hidden]="isReadOnly">
+                      Borrar
+                    </button>
+                  </td>
+
+
+                </ng-container>
+
+              </tr>
+            </tbody>
+
+          </table>
+
+          <button type="button" class="btn btn-outline-success btn-block mb-5" (click)="agregarInput()"
+            [hidden]="isReadOnly">
+            + Agregar
+          </button>
+        </div>
+
+        <h3>Outputs</h3>
+        <div class="col">
+          <table class="table table-hover">
+            <thead class="thead-dark">
+              <tr>
+                <th>Id</th>
+                <th>Name</th>
+                <th>Type</th>
+                <th [hidden]="isReadOnly">Borrar</th>
+              </tr>
+            </thead>
+            <tbody>
+              <tr *ngFor="let obj of outputs.controls; let i= index" formArrayName="outputs">
+                <ng-container [formGroupName]="i">
+
+                  <td>{{i+1}}</td>
+
+                  <td>
+                    <textarea class="form-control" type="text" formControlName="name"
+                      [readOnly]="isReadOnly"> </textarea>
+                  </td>
+
+                  <td>
+                    <textarea class="form-control" type="text" formControlName="type"
+                      [readOnly]="isReadOnly"> </textarea>
+                  </td>
+                  <td>
+                    <button class="btn btn-outline-danger btn-block" (click)="borrarOutput(i)" [hidden]="isReadOnly">
+                      Borrar
+                    </button>
+                  </td>
+
+
+                </ng-container>
+
+              </tr>
+            </tbody>
+
+          </table>
+
+          <button type="button" class="btn btn-outline-success btn-block mb-5" (click)="agregarOutput()"
+            [hidden]="isReadOnly">
+            + Agregar
           </button>
         </div>
       </div>
     </div>
 
-  </form>
-
-
-
-  <hr>
-
-  <div class="contenedor">
-    <div class="contenedor_formulario">
-      <h1 class="is-size-1">Subir archivos a Cloud Storage</h1>
-      <p class="download" *ngIf="finalizado">URL de descarga: <a href="{{ URLPublica }}" target="_blank">Descargar</a></p>
-      <form [formGroup]="archivoForm" (ngSubmit)="subirArchivo()">
-        <div class="file has-name is-boxed">
-          <label class="file-label">
-            <input class="file-input" type="file" formControlName="archivo" (change)="cambioArchivo($event)">
-            <span class="file-cta">
-              <span class="file-label">
-                Elegir un archivo…
+    <hr>
+    <div class="contenedor">
+      <div class="formulario">
+        <h1 class="is-size-1">Subir archivos a Cloud Storage</h1>
+        <p class="download" *ngIf="finalizado">URL de descarga: <a href="{{ URLPublica }}" target="_blank">Descargar</a>
+        </p>
+        <form [formGroup]="archivoForm" (ngSubmit)="subirArchivo()">
+          <div class="file has-name is-boxed">
+            <label class="file-label">
+              <input class="file-input" type="file" formControlName="archivo" (change)="cambioArchivo($event)">
+              <span class="file-name">
+                {{ mensajeArchivo }}
               </span>
-            </span>
-            <span class="file-name">
-              {{ mensajeArchivo }}
-            </span>
-          </label>
-        </div>
-        <hr>
-        <progress *ngIf="porcentaje > 0 && porcentaje < 100" class="progress is-large is-success" value="{{porcentaje}}" max="100">{{porcentaje}}%</progress>
-        <button [ngClass]="{'button': true, 'btn-success': true, 'btn-large': true, 'is-loading': porcentaje > 0 && porcentaje < 100}" [disabled]="!archivoForm.valid && (porcentaje > 0 && porcentaje < 100)">Subir archivo</button>
-      </form>
+            </label>
+          </div>
+          <hr>
+          <progress *ngIf="porcentaje > 0 && porcentaje < 100" class="progress is-large is-success"
+            value="{{porcentaje}}" max="100">{{porcentaje}}%</progress>
+          <button
+            [ngClass]="{'button': true, 'btn-success': true, 'btn-large': true, 'is-loading': porcentaje > 0 && porcentaje < 100}"
+            [disabled]="!archivoForm.valid && (porcentaje > 0 && porcentaje < 100)">Subir archivo</button>
+        </form>
+      </div>
+    </div>
+
+    <hr>
+    <div class="form-group row">
+      <div class="input-group col">
+        <button type="submit" class="btn btn-outline-primary btn-block" [hidden]="isReadOnly">
+          Guardar
+        </button>
+      </div>
     </div>
   </div>
+
+</form>

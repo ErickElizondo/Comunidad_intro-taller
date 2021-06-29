@@ -23,8 +23,12 @@ table td {
     align-items: center;
     height: 100%;
 }
-.contenedor-formulario {  
-    width: 400px;
+.formulario {  
+    width: 100%;
+}
+
+.file-input{
+    font-size: small;
 }
 
 .download {  
@@ -37,5 +41,4 @@ table td {
 .download a {    
     text-decoration: underline;    
     color: #FFFFFF;  
-}
-    
+}  
