@@ -14,7 +14,7 @@ export class EjerciciosService {
   }
 
   getEjercicios(): Observable<any> {
-    return this.firestore.collection('ejercicios', ref => ref.orderBy('fechaCreacion', 'desc')).snapshotChanges();
+    return this.firestore.collection('ejercicios', ref => ref.orderBy('fechaCreacion', 'asc')).snapshotChanges();
   }
 
   getEjerciciosTerm(termino: string): Observable<any> {

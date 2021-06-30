@@ -16,6 +16,7 @@ export class SearchComponent implements OnInit {
   errorMessage: string;
 
   tipoBusqueda: string = "name";
+  nValores: string = "";
   currentRate: string = "1";
 
   constructor(private ejercicio_Service: EjerciciosService) {
@@ -27,14 +28,20 @@ export class SearchComponent implements OnInit {
     this.tipoBusqueda = value;
   }
 
+  valores(nValores: string) {
+    console.log(nValores);
+    this.nValores = nValores;
+    this.filtrarCantidad();
+  }
+
   buscar(termino: string) {
+    this.busqueda = [];
     if (termino != "") {
-      this.busqueda = [];
       const arreglo = [...this.ejercicios];
       let buscar = termino.toLowerCase();
 
       arreglo.forEach(element => {
-        if (+element.level >= +this.currentRate) {
+        if (+element.level == +this.currentRate) {
           if (this.tipoBusqueda == "name") {
             if (element.name.toLocaleLowerCase().includes(buscar)) {
               this.busqueda.push(element);
@@ -71,6 +78,15 @@ export class SearchComponent implements OnInit {
         this.loading = false;
         this.errorMessage = errorService.error.error.message;
       });
+  }
+
+  filtrarCantidad() {
+    setTimeout(() => {
+      this.busqueda = [];
+      const arreglo = [...this.ejercicios];
+      console.log(this.ejercicios);
+      this.busqueda = arreglo.slice(0, +this.nValores); 
+    }, 100)
   }
 
   ngOnInit() {

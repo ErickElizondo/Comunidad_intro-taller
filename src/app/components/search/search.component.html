@@ -1,5 +1,5 @@
 <div class="row ml-3">
-    <div class="col-4">
+    <div class="col-5">
         <div class="btn-group btn-group-toggle" data-toggle="buttons">
             <label class="btn btn-outline-light">
                 <input type="radio" class="form-control" #nombre value="name" (click)="tipo(nombre.value)"> Nombre
@@ -9,12 +9,18 @@
                 Categoria
             </label>
             <label class="btn btn-outline-light">
-                <input type="radio" class="form-control" #descripcion value="details"
-                    (click)="tipo(descripcion.value)"> Descripcion
+                <input type="radio" class="form-control" #descripcion value="details" (click)="tipo(descripcion.value)">
+                Descripcion
             </label>
+            <select class="btn btn-outline-light" #select (click)="valores(select.value)">
+                <option class=" text-dark" selected>Sin Filtro</option>
+                <option class=" text-dark" class="form-control" value="10" >10</option>
+                <option class=" text-dark" class="form-control" value="20">20</option>
+                <option class=" text-dark" class="form-control" value="30">30</option>
+            </select>
         </div>
     </div>
-    <div class="col-8">
+    <div class="col-7">
         <input #termino type="text" class="form-control" (keyup)="buscar(termino.value)"
             placeholder="Search by {{tipoBusqueda}}">
     </div>
@@ -38,4 +44,4 @@
     </p>
 </div>
 
-<app-tarjetas  [items]="busqueda"></app-tarjetas>
+<app-tarjetas [items]="busqueda"></app-tarjetas>
