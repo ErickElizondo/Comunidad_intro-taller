@@ -14,6 +14,7 @@ export class SearchComponent implements OnInit {
   loading: boolean;
   errorFlag: boolean;
   errorMessage: string;
+  estrellaSelected: boolean;
 
   tipoBusqueda: string = "name";
   nValores: string = "";
@@ -29,6 +30,8 @@ export class SearchComponent implements OnInit {
   }
 
   valores(nValores: string) {
+    this.estrellaSelected = false;
+    this.currentRate = "1";
     console.log(nValores);
     this.nValores = nValores;
     this.filtrarCantidad();
@@ -95,6 +98,7 @@ export class SearchComponent implements OnInit {
 
   filtrarEstrella(){
     setTimeout(() => {
+      this.estrellaSelected = true;
       this.busqueda = [];
       const arreglo = [...this.ejercicios];
       arreglo.forEach(element => {

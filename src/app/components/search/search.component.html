@@ -13,7 +13,7 @@
                 Descripcion
             </label>
             <select class="btn btn-outline-light" #select (click)="valores(select.value)">
-                <option class=" text-dark" selected>Sin Filtro</option>
+                <option class=" text-dark" selected [selected] = "estrellaSelected">Sin filtrar</option>
                 <option class=" text-dark" class="form-control" value="10" >10</option>
                 <option class=" text-dark" class="form-control" value="20">20</option>
                 <option class=" text-dark" class="form-control" value="30">30</option>
