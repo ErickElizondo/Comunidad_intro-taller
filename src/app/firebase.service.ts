@@ -98,11 +98,6 @@ export class FirebaseService {
             
           })
         })
-      } else {
-        //this is the error you where looking at the video that I wasn't able to fix
-        //the function is running on refresh so its checking if the user is logged in or not
-        //hence the redirect to the login
-        this.ngZone.run(() => this.router.navigate(["/home"]));
       }
     })
   }

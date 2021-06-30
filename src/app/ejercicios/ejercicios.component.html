@@ -108,10 +108,12 @@
 
     <div class="form-group row">
       <label class="col-2 col-form-label">Section</label>
-      <div class="col">
-
-        <input class="form-control" type="text" placeholder="Section" formControlName="section"
-          [class.is-invalid]="sectionInvalido" [readOnly]="isReadOnly">
+      <div class="col my-auto">
+        <select class="form-control text-center" formControlName="section" [class.is-invalid]="sectionInvalido">
+          <option value="Árboles" [disabled]="isReadOnly">Árboles</option>
+          <option value="Listas, vectores y matrices" [disabled]="isReadOnly">Listas, vectores y matrices</option>
+          <option value="Algoritmos numéricos" [disabled]="isReadOnly">Algoritmos numéricos</option>
+        </select>
         <small *ngIf="sectionInvalido" class="text-danger">
           Es un campo obligatorio
         </small>
