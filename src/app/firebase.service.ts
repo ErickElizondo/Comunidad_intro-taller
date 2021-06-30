@@ -81,6 +81,7 @@ export class FirebaseService {
         //set the listenener to be null, for the UI to react
         this.setUserStatus(null);
         this.ngZone.run(() => this.router.navigate(["/home"]));
+        window.location.reload();
 
       }).catch((err) => {
         console.log(err);
