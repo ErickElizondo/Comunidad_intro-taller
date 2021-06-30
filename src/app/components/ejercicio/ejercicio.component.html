@@ -39,6 +39,9 @@
                 <br>
             </div>
         </div>
+        <div class="card-footer">
+            <a [hidden] = "!URLPublica" href="{{ URLPublica }}" target="_blank">Descargar</a>
+        </div>
     </div>
     <div class="card animated fadeIn" *ngIf="!loading">
         <div class="card-header">

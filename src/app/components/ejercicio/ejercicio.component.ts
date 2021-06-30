@@ -20,6 +20,7 @@ export class EjercicioComponent implements OnInit {
 
   selected: string;
   hovered: string;
+  URLPublica: string;
 
   constructor(private ejercicio_Service: EjerciciosService, private router: ActivatedRoute) {
     this.idEjercicio = this.router.snapshot.paramMap.get('id');
@@ -34,6 +35,7 @@ export class EjercicioComponent implements OnInit {
           id: data.payload.id,
           ...data.payload.data()
         }
+        this.URLPublica = data.payload.data()['urlDownload'];
         this.loading = false;
         this.selected = this.ejercicio.level;
         console.log(this.ejercicio);
