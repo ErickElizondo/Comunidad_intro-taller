@@ -3,7 +3,7 @@
   <nav>
     <ul>
       <li>
-        <a class="text-white nounderline" [routerLink]="[ '/search' ]">Search</a>
+        <button type="button" class="btn btn-outline-light" [routerLink]="[ '/search' ]">Search</button>
       </li>
     </ul>
     <ul>
@@ -13,9 +13,7 @@
       <li *ngIf="userStatus && userStatus.role === 'admin'"><a class="text-white nounderline"
           [routerLink]="[ '/admin' ]">Admin</a></li>
       <li *ngIf="userStatus"><button class="logout" (click)="logout()">Logout</button></li>
-
     </ul>
-
   </nav>
 
   <main>

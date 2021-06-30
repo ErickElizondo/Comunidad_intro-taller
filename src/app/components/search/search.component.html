@@ -1,7 +1,31 @@
-<div class="row">
-    <div class="col">
+<div class="row ml-3">
+    <div class="col-4">
+        <div class="btn-group btn-group-toggle" data-toggle="buttons">
+            <label class="btn btn-outline-light">
+                <input type="radio" class="form-control" #nombre value="name" (click)="tipo(nombre.value)"> Nombre
+            </label>
+            <label class="btn btn-outline-light">
+                <input type="radio" class="form-control" #categoria value="section" (click)="tipo(categoria.value)">
+                Categoria
+            </label>
+            <label class="btn btn-outline-light">
+                <input type="radio" class="form-control" #descripcion value="details"
+                    (click)="tipo(descripcion.value)"> Descripcion
+            </label>
+        </div>
+    </div>
+    <div class="col-8">
         <input #termino type="text" class="form-control" (keyup)="buscar(termino.value)"
-            placeholder="buscar ejercicio...">
+            placeholder="Search by {{tipoBusqueda}}">
+    </div>
+</div>
+<div class="row ml-3">
+    <div class="col-4">
+        <ngb-rating [(rate)]="currentRate" [max]="5">
+            <ng-template let-fill="fill" let-index="index">
+                <span class="star" [class.filled]="fill === 100">&#9733;</span>
+            </ng-template>
+        </ngb-rating>
     </div>
 </div>
 
@@ -14,4 +38,4 @@
     </p>
 </div>
 
-<app-tarjetas *ngIf="termino.value != ''" [items]="ejercicios"></app-tarjetas>
+<app-tarjetas *ngIf="termino.value != ''" [items]="busqueda"></app-tarjetas>

@@ -13,7 +13,6 @@ const routes: Routes = [
   { path: 'signup', loadChildren: () => import('./signup/signup.module').then(m => m.SignupModule) },
   { path: 'login', loadChildren: () => import('./login/login.module').then(m => m.LoginModule) },
   { path: 'admin', canActivate: [AuthGuard], data: { roles: ["admin"] }, loadChildren: () => import('./admin/admin.module').then(m => m.AdminModule) },
-  { path: 'admin', canActivate: [AuthGuard], data: { roles: ["admin"] }, loadChildren: () => import('./admin/admin.module').then(m => m.AdminModule) },
   { path: 'admin/read/:id', component: EjerciciosComponent, canActivate: [AuthGuard], data: { roles: ["admin"] } },
   { path: 'admin/create', component: EjerciciosComponent, canActivate: [AuthGuard], data: { roles: ["admin"] } },
   { path: 'admin/update/:id', component: EjerciciosComponent, canActivate: [AuthGuard], data: { roles: ["admin"] } },

@@ -15,7 +15,6 @@ import { AppRoutingModule } from './app-routing.module';
 import { HomeComponent } from './home/home.component';
 import { EjerciciosComponent } from './ejercicios/ejercicios.component';
 import { TarjetasComponent } from './components/tarjetas/tarjetas.component';
-import { ListEjerciciosComponent } from './list-ejercicios/list-ejercicios.component';
 import { LoadingComponent } from './components/loading/loading.component';
 import { EjercicioComponent } from './components/ejercicio/ejercicio.component';
 import { CategoriaComponent } from './components/categoria/categoria.component';
@@ -28,7 +27,6 @@ import { HighlightModule, HIGHLIGHT_OPTIONS } from 'ngx-highlightjs';
     AppComponent,
     HomeComponent,
     EjerciciosComponent,
-    ListEjerciciosComponent,
     TarjetasComponent,
     LoadingComponent,
     EjercicioComponent,
