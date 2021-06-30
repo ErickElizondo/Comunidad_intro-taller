@@ -77,4 +77,17 @@ export class SearchComponent implements OnInit {
     this.getEjercicios()
   }
 
+  filtrarEstrella(){
+    setTimeout(() => {
+      this.busqueda = [];
+      const arreglo = [...this.ejercicios];
+      arreglo.forEach(element => {
+        if (+element.level == +this.currentRate) {
+          this.busqueda.push(element);
+        }
+      }); 
+    }, 100)
+    
+  }
+
 }

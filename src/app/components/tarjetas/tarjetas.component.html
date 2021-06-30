@@ -1,27 +1,40 @@
 <div class="card-columns m-5 animated fadeIn">
-    <div (click)="verEjercicio(item)" *ngFor="let item of items; let i=index"
+    <div  *ngFor="let item of items; let i=index"        
         class="card puntero text-white bg-dark mb-3">
-        <img class="card-img-top" *ngIf="item.section == 'Árboles'" src="../assets/tree.jpg" slot="start">
-        <img class="card-img-top" *ngIf="item.section == 'Listas, vectores y matrices'" src="../assets/vector.jpg"
-            slot="start">
-        <img class="card-img-top" *ngIf="item.section == 'Algoritmos numéricos'" src="../assets/list.jpg" slot="start">
-        <div class="card-body">
-            <h4 class="card-title" *ngIf="item.section == 'Árboles'"> <span class="badge badge-danger">{{ item.name
-                    }}</span> </h4>
-            <h4 class="card-title" *ngIf="item.section == 'Listas, vectores y matrices'"> <span
-                    class="badge badge-info">{{ item.name }}</span> </h4>
-            <h4 class="card-title" *ngIf="item.section == 'Algoritmos numéricos'"> <span class="badge badge-success">{{
-                    item.name }}</span> </h4>
-            <p class="card-text">
-                {{ item.details }}
-            </p>
+        <div (click)="verEjercicio(item)">
+            <img class="card-img-top" *ngIf="item.section == 'Árboles'" src="../assets/tree.jpg" slot="start">
+            <img class="card-img-top" *ngIf="item.section == 'Listas, vectores y matrices'" src="../assets/vector.jpg"
+                slot="start">
+            <img class="card-img-top" *ngIf="item.section == 'Algoritmos numéricos'" src="../assets/list.jpg" slot="start">
+            <div class="card-body">
+                <h4 class="card-title" *ngIf="item.section == 'Árboles'"> <span class="badge badge-danger">{{ item.name
+                        }}</span> </h4>
+                <h4 class="card-title" *ngIf="item.section == 'Listas, vectores y matrices'"> <span
+                        class="badge badge-info">{{ item.name }}</span> </h4>
+                <h4 class="card-title" *ngIf="item.section == 'Algoritmos numéricos'"> <span class="badge badge-success">{{
+                        item.name }}</span> </h4>
+                <p class="card-text">
+                    {{ item.details }}
+                </p>
+            </div>
         </div>
         <div class="card-footer">
-            <ngb-rating [(rate)]="currentRate" [rate]="item.level" [max]="5" [readonly]="true">
-                <ng-template let-fill="fill" let-index="index">
-                    <span class="star" [class.filled]="fill === 100" [class.bad]="index < 2">&#9733;</span>
-                </ng-template>
-            </ngb-rating>
+            <div class="row">
+                <div class="col" (click)="verEjercicio(item)">
+                    <ngb-rating [(rate)]="currentRate" [rate]="item.level" [max]="5" [readonly]="true">
+                        <ng-template let-fill="fill" let-index="index">
+                            <span class="star" [class.filled]="fill === 100" [class.bad]="index < 2">&#9733;</span>
+                        </ng-template>
+                    </ngb-rating>
+                </div>
+                <div class="col" [hidden]="!userStatus || userStatus.role ==='user'">
+                    <div *ngIf="userStatus && userStatus.role === 'admin'" class="row mt-2 float-right">
+                        <i class="fas fa-edit fa-lg mr-2" [routerLink]="['/admin/update/', item.id]"></i>
+                        <i (click)="eliminarEjercicio(item.id)" class="fas fa-trash-alt fa-lg text-danger mr-2" id="test"></i>
+                        <i class="fas fa-info-circle text-success fa-lg mr-2" [routerLink]="['/admin/read/', item.id]"></i>
+                    </div>
+                </div>
+            </div>
         </div>
     </div>
 </div>

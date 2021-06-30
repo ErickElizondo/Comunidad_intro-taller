@@ -23,7 +23,7 @@
     <div class="col-4">
         <ngb-rating [(rate)]="currentRate" [max]="5">
             <ng-template let-fill="fill" let-index="index">
-                <span class="star" [class.filled]="fill === 100">&#9733;</span>
+                <span class="star" [class.filled]="fill === 100" (click)="filtrarEstrella()">&#9733;</span>
             </ng-template>
         </ngb-rating>
     </div>
@@ -38,4 +38,4 @@
     </p>
 </div>
 
-<app-tarjetas *ngIf="termino.value != ''" [items]="busqueda"></app-tarjetas>
+<app-tarjetas  [items]="busqueda"></app-tarjetas>
