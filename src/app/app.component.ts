@@ -27,4 +27,15 @@ export class AppComponent implements OnInit {
 
     this.firebaseService.userStatusChanges.subscribe(x => this.userStatus = x);
   }
+
+  getUser(): Promise<any>{
+    return new Promise<any>((resolve, reject) => {
+      let user: any;
+      this.firebaseService.userStatusChanges.subscribe(x => {
+        user = x;
+      });
+      resolve(user);
+    });
+    
+  }
 }

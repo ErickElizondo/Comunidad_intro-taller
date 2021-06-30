@@ -1,5 +1,6 @@
 import { Component, Input, OnInit } from '@angular/core';
 import { Router } from '@angular/router';
+import { AppComponent } from 'src/app/app.component';
 import { EjerciciosService } from 'src/app/ejercicios.service';
 import { FirebaseService } from 'src/app/firebase.service';
 
@@ -12,12 +13,14 @@ export class TarjetasComponent implements OnInit {
 
   @Input() items: any[] = [];
 
-  constructor(private router: Router, private firebaseService: FirebaseService, private _ejercicioService: EjerciciosService) { }
+  constructor(private router: Router, private firebaseService: FirebaseService, private _ejercicioService: EjerciciosService, private test: AppComponent) { }
 
   userStatus: any = this.firebaseService;
   ngOnInit(): void {
-    this.firebaseService.userChanges();
-    this.firebaseService.userStatusChanges.subscribe(x => this.userStatus = x);
+    this.userStatus = this.test.getUser().then(x =>{
+      this.userStatus = x;
+    });
+    
     
   }
 
